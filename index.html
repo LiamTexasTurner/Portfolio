@@ -122,6 +122,10 @@
     align-items:center;
     row-gap:6px;
     min-height:36px;
+    transition:transform .25s ease;
+  }
+  nav.links.nav-hidden{
+    transform:translateY(-100%);
   }
   nav.links .dot{ color:var(--ink-muted); padding:0 8px; }
 
@@ -236,24 +240,6 @@
   .project-link{ font-weight:500; }
   .project-link::before{ content:"→ "; color:var(--accent-2); text-decoration:none; }
 
-  /* ---- writing ---- */
-  .writing-list{ list-style:none; margin:0; padding:0; }
-  .writing-list li{
-    display:flex;
-    gap:16px;
-    padding:8px 0;
-  }
-  .writing-date{
-    flex:0 0 auto;
-    color:var(--ink-muted);
-    font-size:12.5px;
-    font-variant-numeric:tabular-nums;
-    padding-top:2px;
-    width:5.5em;
-  }
-  .writing-title{ font-weight:500; }
-  .writing-venue{ color:var(--ink-muted); font-size:13px; text-decoration:none; }
-
   /* ---- contact ---- */
   .contact-list{
     display:flex;
@@ -294,26 +280,14 @@
 <div class="frame-outer">
     <!-- EDIT: nav links -->
     <nav class="links" aria-label="Primary">
-      <a href="#about">About</a><span class="dot">.</span><a href="#projects">Projects</a><span class="dot">.</span><a href="#writing">Writing</a><span class="dot">.</span><a href="#contact">Contact</a><span class="dot">.</span><a href="https://github.com/" target="_blank" rel="noopener">Github</a>
+      <a href="#projects">Projects</a><span class="dot">.</span><a href="#about">About</a><span class="dot">.</span><a href="#contact">Contact</a><span class="dot">.</span><a href="https://github.com/" target="_blank" rel="noopener">Github</a>
     </nav>
     <div class="content">
 
       <!-- EDIT: name, tagline -->
       <p class="eyebrow">Portfolio</p>
-      <h1 class="name">Jordan Blake<span class="cursor">_</span></h1>
+      <h1 class="name">Liam Turner<span class="cursor">_</span></h1>
       <p class="tagline">Software engineer working on real-time animation and tools. I build things, break things, and occasionally write about both.</p>
-
-      <hr class="rule">
-
-      <!-- EDIT: bio + skills -->
-      <section id="about">
-        <h2 class="section-title">About</h2>
-        <div class="prose">
-          <p>I'm a software engineer focused on animation systems, tooling and the occasional weird side project. Most of my work sits somewhere between graphics programming and developer tooling — things that make other people's work faster or their output look better.</p>
-          <p class="muted">Previously at a couple of studios you've probably heard of. Based in Sydney, usually awake at odd hours debugging something that only breaks on Tuesdays.</p>
-        </div>
-        <p class="skills-line">C++ · Python · Rust · OpenGL · Animation Systems · Tooling</p>
-      </section>
 
       <hr class="rule">
 
@@ -324,7 +298,7 @@
 
           <div class="project">
             <div class="project-head">
-              <h3 class="project-title">Skelter</h3>
+              <h3 class="project-title">Movement Shooter Navmesh</h3>
               <span class="project-year">2025</span>
             </div>
             <p class="project-desc">A lightweight viewer for skeletal animation data, built for fast iteration on retargeting and motion-matching datasets.</p>
@@ -384,23 +358,14 @@
 
       <hr class="rule">
 
-      <!-- EDIT: writing list -->
-      <section id="writing">
-        <h2 class="section-title">Writing</h2>
-        <ul class="writing-list">
-          <li>
-            <span class="writing-date">2025.11</span>
-            <span><a class="writing-title" href="#">Notes on motion matching for small teams</a> <span class="writing-venue">— personal blog</span></span>
-          </li>
-          <li>
-            <span class="writing-date">2025.04</span>
-            <span><a class="writing-title" href="#">Why I stopped using inverse kinematics for foot placement</a> <span class="writing-venue">— personal blog</span></span>
-          </li>
-          <li>
-            <span class="writing-date">2024.09</span>
-            <span><a class="writing-title" href="#">A short case for writing your own build tools</a> <span class="writing-venue">— personal blog</span></span>
-          </li>
-        </ul>
+      <!-- EDIT: bio + skills -->
+      <section id="about">
+        <h2 class="section-title">About</h2>
+        <div class="prose">
+          <p>I'm a software engineer focused on animation systems, tooling and the occasional weird side project. Most of my work sits somewhere between graphics programming and developer tooling — things that make other people's work faster or their output look better.</p>
+          <p class="muted">Previously at a couple of studios you've probably heard of. Based in Sydney, usually awake at odd hours debugging something that only breaks on Tuesdays.</p>
+        </div>
+        <p class="skills-line">C++ · Python · Rust · OpenGL · Animation Systems · Tooling</p>
       </section>
 
       <hr class="rule">
@@ -426,5 +391,29 @@
     </div>
 </div>
 
+<script>
+  // EDIT: on mobile, hide the nav bar on scroll-down and reveal it on
+  // scroll-up (matches the "600px" breakpoint used elsewhere in the CSS).
+  (function(){
+    var nav = document.querySelector('nav.links');
+    var isMobile = window.matchMedia('(max-width:600px)');
+    var lastY = window.scrollY;
+
+    window.addEventListener('scroll', function(){
+      if(!isMobile.matches){
+        nav.classList.remove('nav-hidden');
+        lastY = window.scrollY;
+        return;
+      }
+      var y = window.scrollY;
+      if(y > lastY && y > 80){
+        nav.classList.add('nav-hidden');
+      } else {
+        nav.classList.remove('nav-hidden');
+      }
+      lastY = y;
+    }, { passive:true });
+  })();
+</script>
 </body>
 </html>
