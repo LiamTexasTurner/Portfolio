@@ -6,24 +6,27 @@
 <title>Terminal Portfolio</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@100;400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
 <style>
   /* ---------------------------------------------------------------
      HOW TO CUSTOMIZE THIS PAGE
 
-     COLORS — everything below is driven by the variables in the two
-     ":root" blocks directly under this comment (light theme) and in
-     the two dark-theme blocks right after (@media + [data-theme]).
-     Change a value in ONE place and it updates everywhere that color
-     is used on the page:
-       --bg       page background, behind the card
-       --surface  card / section background
-       --surface-2 skill-chip background, slightly off from --surface
+     Styled after theorangeduck.com: a single frame made of two
+     nested borders (teal outside, orange inside, no gap between
+     them), airy monospace text, and thin orange rules ("hr.rule")
+     separating sections instead of boxed cards. Content runs edge
+     to edge inside one padded ".content" wrapper rather than each
+     section having its own background/border.
+
+     COLORS — driven by the variables in the two ":root" blocks
+     below (light theme) and the two dark-theme blocks right after:
+       --bg        area outside the frame
+       --surface   frame background
        --ink       main text color
        --ink-muted secondary/muted text (bio filler, dates, tags)
-       --accent-1  primary accent (header top border, links, hover) — teal by default
-       --accent-2  secondary accent (rules, section labels, arrows) — orange by default
-       --border    hairline borders throughout
+       --accent-1  outer frame border / links hover — teal
+       --accent-2  inner frame border, rule bars, section markers — orange
+       --border    hairline borders (video/image frames)
      Keep the SAME variable name defined in all three blocks (light,
      dark-via-OS, dark-via-toggle) so both themes stay in sync.
 
@@ -41,21 +44,19 @@
      --------------------------------------------------------------- */
 
   :root{
-    --bg:#d3d7da;
-    --surface:#f7f6f2;
-    --surface-2:#eae7de;
-    --ink:#17191b;
+    --bg:#a9a9a9;
+    --surface:#f0f0f0;
+    --ink:#101010;
     --ink-muted:#585d61;
-    --accent-1:#1f6f7e;
-    --accent-2:#c97a2e;
-    --border:#c3c0b6;
-    --focus:#1f6f7e;
+    --accent-1:#1e687a;
+    --accent-2:#dc9542;
+    --border:#cccccc;
+    --focus:#1e687a;
   }
   @media (prefers-color-scheme: dark){
     :root:not([data-theme="light"]){
       --bg:#14171a;
       --surface:#1c2023;
-      --surface-2:#242a2d;
       --ink:#e8e6e0;
       --ink-muted:#9aa0a4;
       --accent-1:#5fc2d1;
@@ -67,7 +68,6 @@
   :root[data-theme="dark"]{
     --bg:#14171a;
     --surface:#1c2023;
-    --surface-2:#242a2d;
     --ink:#e8e6e0;
     --ink-muted:#9aa0a4;
     --accent-1:#5fc2d1;
@@ -82,49 +82,60 @@
     background:var(--bg);
     color:var(--ink);
     font-family:'IBM Plex Mono', ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
-    font-size:15px;
-    line-height:1.7;
+    font-size:14px;
+    line-height:1.5;
     -webkit-font-smoothing:antialiased;
+    padding:24px 14px;
   }
   h1,h2,h3,.mono-head{
     font-family:'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
   }
-  a{ color:var(--accent-1); text-decoration:none; }
-  a:hover{ color:var(--accent-2); text-decoration:underline; text-underline-offset:3px; }
+  a{ color:var(--ink); text-decoration:underline; text-underline-offset:2px; }
+  a:hover{ color:var(--accent-1); }
   a:focus-visible, button:focus-visible{
     outline:2px solid var(--focus); outline-offset:2px; border-radius:2px;
   }
 
-  .page{
-    max-width:1000px;
+  /* ---- frame ---- */
+  .frame-outer{
+    max-width:860px;
     margin:0 auto;
-    padding:56px 20px 80px;
-  }
-
-  .card{
-    background:var(--surface);
-    border:1px solid var(--border);
     border-top:4px solid var(--accent-1);
+    background:var(--surface);
+  }
+  .content{
+    padding:20px 50px 50px;
   }
 
-  /* ---- header ---- */
-  .hero{
-    padding:44px 40px 32px;
-    border-bottom:2px solid var(--accent-2);
+  /* ---- top nav: plain text row, dot-separated, no sticky bar ---- */
+  nav.links{
+    position:sticky;
+    top:0;
+    z-index:10;
+    background:var(--surface);
+    font-size:15px;
+    letter-spacing:.02em;
+    padding:6px 50px;
+    border-bottom:1px solid var(--border);
+    display:flex;
+    align-items:center;
+    min-height:36px;
   }
+  nav.links .dot{ color:var(--ink-muted); padding:0 8px; }
+
   .eyebrow{
     color:var(--ink-muted);
     font-size:12px;
     letter-spacing:.12em;
     text-transform:uppercase;
-    margin:0 0 14px;
+    margin:0 0 6px;
   }
-  .name{
-    margin:0;
-    font-size:clamp(28px, 5vw, 38px);
-    font-weight:700;
-    letter-spacing:-.01em;
-    text-wrap:balance;
+  h1.name{
+    margin:0 0 8px;
+    font-size:clamp(26px, 5vw, 34px);
+    font-weight:100;
+    letter-spacing:.3px;
+    line-height:1.2;
   }
   .cursor{
     display:inline-block;
@@ -135,87 +146,49 @@
   @keyframes blink{ 50%{ opacity:0; } }
 
   .tagline{
-    margin:10px 0 0;
+    margin:0;
     color:var(--ink-muted);
-    font-size:15px;
-    max-width:60ch;
+    font-size:14.5px;
+    line-height:1.8;
   }
 
-  nav.links{
-    /* sticks to the viewport top once scrolled past */
-    position:sticky;
-    top:0;
-    z-index:20;
-    padding:14px 40px;
-    background:var(--surface);
-    border-bottom:1px solid var(--border);
-    display:flex;
-    flex-wrap:wrap;
-    gap:0 10px;
-    font-family:'JetBrains Mono', monospace;
-    font-size:13px;
-    letter-spacing:.02em;
+  /* ---- rule bar used between sections, in place of boxed cards ---- */
+  hr.rule{
+    border:0;
+    height:3px;
+    background:var(--accent-2);
+    margin:20px 0;
   }
-  nav.links a{ color:var(--ink); }
-  nav.links a:hover{ color:var(--accent-1); text-decoration-color:var(--accent-1); }
-  nav.links span.dot{ color:var(--border); }
-  nav.links span.dot::after{ content:"·"; }
-
-  /* ---- generic section ---- */
-  section{
-    padding:36px 40px;
-    border-bottom:1px solid var(--border);
-    scroll-margin-top:64px; /* keeps the sticky nav from covering the heading when you jump to a section */
-  }
-  section:last-of-type{ border-bottom:none; }
 
   @media (prefers-reduced-motion: no-preference){
     html{ scroll-behavior:smooth; }
   }
 
-  .section-label{
-    font-family:'JetBrains Mono', monospace;
-    font-size:12px;
-    letter-spacing:.14em;
-    text-transform:uppercase;
-    color:var(--accent-2);
-    margin:0 0 18px;
+  section{ scroll-margin-top:24px; }
+
+  h2.section-title{
+    font-weight:100;
+    font-size:22px;
+    letter-spacing:.3px;
+    margin:0 0 14px;
+    line-height:1.2;
   }
 
   .prose{
-    max-width:66ch;
     color:var(--ink);
+    line-height:1.8;
   }
   .prose p + p{ margin-top:14px; }
   .prose .muted{ color:var(--ink-muted); }
 
-  .skills{
+  .skills-line{
     margin-top:18px;
-    display:flex;
-    flex-wrap:wrap;
-    gap:8px 10px;
-    font-family:'JetBrains Mono', monospace;
-    font-size:12.5px;
     color:var(--ink-muted);
-  }
-  .skills span{
-    border:1px solid var(--border);
-    padding:3px 8px;
-    background:var(--surface-2);
+    font-size:13.5px;
   }
 
   /* ---- projects ---- */
-  .project-list{
-    display:flex;
-    flex-direction:column;
-  }
-  .project{
-    padding:18px 0 18px 18px;
-    border-left:2px solid var(--border);
-    transition:border-color .15s ease;
-  }
-  .project + .project{ margin-top:4px; }
-  .project:hover{ border-left-color:var(--accent-1); }
+  .project + .project{ margin-top:36px; }
 
   .project-head{
     display:flex;
@@ -226,7 +199,7 @@
   }
   .project-title{
     margin:0;
-    font-size:16.5px;
+    font-size:17px;
     font-weight:600;
   }
   .project-year{
@@ -237,16 +210,14 @@
   .project-desc{
     margin:8px 0 0;
     color:var(--ink-muted);
-    max-width:62ch;
   }
   .project-video{
     display:block;
     width:100%;
-    max-width:520px;
     height:auto;
     margin-top:14px;
-    border:1px solid var(--border);
-    background:var(--surface-2); /* shows as a plain box until a real clip is in place */
+    border:2px solid var(--border);
+    background:var(--surface);
   }
   .project-meta{
     margin-top:12px;
@@ -258,21 +229,18 @@
   }
   .project-tags{
     color:var(--ink-muted);
-    font-family:'JetBrains Mono', monospace;
   }
   .project-tags span:not(:last-child)::after{ content:" · "; }
   .project-link{ font-weight:500; }
-  .project-link::before{ content:"→ "; color:var(--accent-2); }
+  .project-link::before{ content:"→ "; color:var(--accent-2); text-decoration:none; }
 
   /* ---- writing ---- */
   .writing-list{ list-style:none; margin:0; padding:0; }
   .writing-list li{
     display:flex;
     gap:16px;
-    padding:10px 0;
-    border-bottom:1px dashed var(--border);
+    padding:8px 0;
   }
-  .writing-list li:last-child{ border-bottom:none; }
   .writing-date{
     flex:0 0 auto;
     color:var(--ink-muted);
@@ -282,26 +250,25 @@
     width:5.5em;
   }
   .writing-title{ font-weight:500; }
-  .writing-venue{ color:var(--ink-muted); font-size:13px; }
+  .writing-venue{ color:var(--ink-muted); font-size:13px; text-decoration:none; }
 
   /* ---- contact ---- */
   .contact-list{
     display:flex;
     flex-direction:column;
-    gap:4px;
+    gap:6px;
   }
   .contact-list a{
     display:inline-flex;
     gap:10px;
     color:var(--ink);
-    padding:4px 0;
+    padding:2px 0;
   }
-  .contact-list a::before{ content:"→"; color:var(--accent-2); }
-  .contact-list a:hover{ color:var(--accent-1); }
+  .contact-list a::before{ content:"→"; color:var(--accent-2); text-decoration:none; }
   .contact-label{ color:var(--ink-muted); min-width:6.5em; display:inline-block; }
 
   footer{
-    padding:24px 40px 0;
+    margin-top:40px;
     color:var(--ink-muted);
     font-size:12.5px;
     display:flex;
@@ -310,153 +277,151 @@
     gap:8px;
   }
   footer a{ color:var(--ink-muted); }
-  footer a:hover{ color:var(--accent-2); }
+  footer a:hover{ color:var(--accent-1); }
 
   @media (max-width:600px){
-    .page{ padding:32px 12px 56px; }
-    .hero{ padding:32px 22px 26px; }
-    nav.links{ padding:12px 22px; }
-    section{ padding:28px 22px; }
+    body{ padding:12px 8px; }
+    .content{ padding:30px 22px 36px; }
+    nav.links{ padding:6px 22px; }
     .project-head{ flex-direction:column; align-items:flex-start; }
   }
 </style>
 </head>
 <body>
 
-<div class="page">
-  <div class="card">
+<div class="frame-outer">
+    <!-- EDIT: nav links -->
+    <nav class="links" aria-label="Primary">
+      <a href="#about">About</a><span class="dot">.</span><a href="#projects">Projects</a><span class="dot">.</span><a href="#writing">Writing</a><span class="dot">.</span><a href="#contact">Contact</a><span class="dot">.</span><a href="https://github.com/" target="_blank" rel="noopener">Github</a>
+    </nav>
+    <div class="content">
 
-    <!-- EDIT: name, tagline -->
-    <header class="hero">
+      <!-- EDIT: name, tagline -->
       <p class="eyebrow">Portfolio</p>
       <h1 class="name">Jordan Blake<span class="cursor">_</span></h1>
       <p class="tagline">Software engineer working on real-time animation and tools. I build things, break things, and occasionally write about both.</p>
-    </header>
 
-    <!-- nav lives outside <header> on purpose: position:sticky only stays
-         stuck while the viewport is inside its PARENT element's box, so
-         nesting it in the (short) header made it scroll away with the
-         header instead of staying pinned for the whole page. -->
-    <nav class="links" aria-label="Primary">
-      <a href="#about">About</a><span class="dot"></span>
-      <a href="#projects">Projects</a><span class="dot"></span>
-      <a href="#writing">Writing</a><span class="dot"></span>
-      <a href="#contact">Contact</a><span class="dot"></span>
-      <a href="https://github.com/" target="_blank" rel="noopener">Github</a>
-    </nav>
+      <hr class="rule">
 
-    <!-- EDIT: bio + skills -->
-    <section id="about">
-      <p class="section-label">About</p>
-      <div class="prose">
-        <p>I'm a software engineer focused on animation systems, tooling and the occasional weird side project. Most of my work sits somewhere between graphics programming and developer tooling — things that make other people's work faster or their output look better.</p>
-        <p class="muted">Previously at a couple of studios you've probably heard of. Based in Sydney, usually awake at odd hours debugging something that only breaks on Tuesdays.</p>
-      </div>
-      <div class="skills">
-        <span>C++</span><span>Python</span><span>Rust</span><span>OpenGL</span><span>Animation Systems</span><span>Tooling</span>
-      </div>
-    </section>
-
-    <!-- EDIT: project list -->
-    <section id="projects">
-      <p class="section-label">Projects</p>
-      <div class="project-list">
-
-        <div class="project">
-          <div class="project-head">
-            <h3 class="project-title">Skelter</h3>
-            <span class="project-year">2025</span>
-          </div>
-          <p class="project-desc">A lightweight viewer for skeletal animation data, built for fast iteration on retargeting and motion-matching datasets.</p>
-
-          <!-- EDIT: video pattern — muted + loop + autoplay, sourced from a
-               relative path. Copy this block into any other .project div,
-               or delete it if a project has no demo clip. -->
-          <video class="project-video" muted loop autoplay playsinline width="640" height="360">
-            <source src="media/skelter/navmesh_clip.mp4" type="video/mp4">
-          </video>
-
-          <div class="project-meta">
-            <span class="project-tags"><span>C++</span><span>OpenGL</span></span>
-            <a class="project-link" href="#">View project</a>
-          </div>
+      <!-- EDIT: bio + skills -->
+      <section id="about">
+        <h2 class="section-title">About</h2>
+        <div class="prose">
+          <p>I'm a software engineer focused on animation systems, tooling and the occasional weird side project. Most of my work sits somewhere between graphics programming and developer tooling — things that make other people's work faster or their output look better.</p>
+          <p class="muted">Previously at a couple of studios you've probably heard of. Based in Sydney, usually awake at odd hours debugging something that only breaks on Tuesdays.</p>
         </div>
+        <p class="skills-line">C++ · Python · Rust · OpenGL · Animation Systems · Tooling</p>
+      </section>
 
-        <div class="project">
-          <div class="project-head">
-            <h3 class="project-title">Loam</h3>
-            <span class="project-year">2024</span>
+      <hr class="rule">
+
+      <!-- EDIT: project list -->
+      <section id="projects">
+        <h2 class="section-title">Projects</h2>
+        <div class="project-list">
+
+          <div class="project">
+            <div class="project-head">
+              <h3 class="project-title">Skelter</h3>
+              <span class="project-year">2025</span>
+            </div>
+            <p class="project-desc">A lightweight viewer for skeletal animation data, built for fast iteration on retargeting and motion-matching datasets.</p>
+
+            <!-- EDIT: video pattern — muted + loop + autoplay, sourced from a
+                 relative path, with native controls (play/pause/scrub/volume).
+                 Copy this block into any other .project div, or delete it if
+                 a project has no demo clip. -->
+            <video class="project-video" muted loop autoplay playsinline controls width="640" height="360" onloadedmetadata="this.volume=0.25">
+              <source src="media/skelter/navmesh_clip.mp4" type="video/mp4">
+            </video>
+
+            <div class="project-meta">
+              <span class="project-tags"><span>C++</span><span>OpenGL</span></span>
+              <a class="project-link" href="#">View project</a>
+            </div>
           </div>
-          <p class="project-desc">A small parser combinator library for describing and validating structured config files without a build step.</p>
-          <div class="project-meta">
-            <span class="project-tags"><span>Rust</span><span>Library</span></span>
-            <a class="project-link" href="#">View project</a>
+
+          <div class="project">
+            <div class="project-head">
+              <h3 class="project-title">Loam</h3>
+              <span class="project-year">2024</span>
+            </div>
+            <p class="project-desc">A small parser combinator library for describing and validating structured config files without a build step.</p>
+            <div class="project-meta">
+              <span class="project-tags"><span>Rust</span><span>Library</span></span>
+              <a class="project-link" href="#">View project</a>
+            </div>
           </div>
+
+          <div class="project">
+            <div class="project-head">
+              <h3 class="project-title">Fieldnotes</h3>
+              <span class="project-year">2023</span>
+            </div>
+            <p class="project-desc">A static-site generator built specifically for long-running project logs and dated writing, with almost no configuration.</p>
+            <div class="project-meta">
+              <span class="project-tags"><span>Python</span><span>CLI</span></span>
+              <a class="project-link" href="#">View project</a>
+            </div>
+          </div>
+
+          <div class="project">
+            <div class="project-head">
+              <h3 class="project-title">./sketches</h3>
+              <span class="project-year">Ongoing</span>
+            </div>
+            <p class="project-desc">A running collection of small experiments — shader sketches, procedural generation toys, and other things that didn't need their own repo.</p>
+            <div class="project-meta">
+              <span class="project-tags"><span>GLSL</span><span>Misc</span></span>
+              <a class="project-link" href="#">View project</a>
+            </div>
+          </div>
+
         </div>
+      </section>
 
-        <div class="project">
-          <div class="project-head">
-            <h3 class="project-title">Fieldnotes</h3>
-            <span class="project-year">2023</span>
-          </div>
-          <p class="project-desc">A static-site generator built specifically for long-running project logs and dated writing, with almost no configuration.</p>
-          <div class="project-meta">
-            <span class="project-tags"><span>Python</span><span>CLI</span></span>
-            <a class="project-link" href="#">View project</a>
-          </div>
+      <hr class="rule">
+
+      <!-- EDIT: writing list -->
+      <section id="writing">
+        <h2 class="section-title">Writing</h2>
+        <ul class="writing-list">
+          <li>
+            <span class="writing-date">2025.11</span>
+            <span><a class="writing-title" href="#">Notes on motion matching for small teams</a> <span class="writing-venue">— personal blog</span></span>
+          </li>
+          <li>
+            <span class="writing-date">2025.04</span>
+            <span><a class="writing-title" href="#">Why I stopped using inverse kinematics for foot placement</a> <span class="writing-venue">— personal blog</span></span>
+          </li>
+          <li>
+            <span class="writing-date">2024.09</span>
+            <span><a class="writing-title" href="#">A short case for writing your own build tools</a> <span class="writing-venue">— personal blog</span></span>
+          </li>
+        </ul>
+      </section>
+
+      <hr class="rule">
+
+      <!-- EDIT: contact links -->
+      <section id="contact">
+        <h2 class="section-title">Contact</h2>
+        <div class="contact-list">
+          <a href="mailto:you@example.com"><span class="contact-label">email</span> you@example.com</a>
+          <a href="https://github.com/" target="_blank" rel="noopener"><span class="contact-label">github</span> github.com/yourname</a>
+          <a href="https://linkedin.com/" target="_blank" rel="noopener"><span class="contact-label">linkedin</span> linkedin.com/in/yourname</a>
+          <a href="https://x.com/" target="_blank" rel="noopener"><span class="contact-label">x / twitter</span> @yourname</a>
         </div>
+      </section>
 
-        <div class="project">
-          <div class="project-head">
-            <h3 class="project-title">./sketches</h3>
-            <span class="project-year">Ongoing</span>
-          </div>
-          <p class="project-desc">A running collection of small experiments — shader sketches, procedural generation toys, and other things that didn't need their own repo.</p>
-          <div class="project-meta">
-            <span class="project-tags"><span>GLSL</span><span>Misc</span></span>
-            <a class="project-link" href="#">View project</a>
-          </div>
-        </div>
+      <hr class="rule">
 
-      </div>
-    </section>
+      <footer>
+        <span>Built by hand, updated 2026.</span>
+        <a href="#about">Back to top ↑</a>
+      </footer>
 
-    <!-- EDIT: writing list -->
-    <section id="writing">
-      <p class="section-label">Writing</p>
-      <ul class="writing-list">
-        <li>
-          <span class="writing-date">2025.11</span>
-          <span><a class="writing-title" href="#">Notes on motion matching for small teams</a> <span class="writing-venue">— personal blog</span></span>
-        </li>
-        <li>
-          <span class="writing-date">2025.04</span>
-          <span><a class="writing-title" href="#">Why I stopped using inverse kinematics for foot placement</a> <span class="writing-venue">— personal blog</span></span>
-        </li>
-        <li>
-          <span class="writing-date">2024.09</span>
-          <span><a class="writing-title" href="#">A short case for writing your own build tools</a> <span class="writing-venue">— personal blog</span></span>
-        </li>
-      </ul>
-    </section>
-
-    <!-- EDIT: contact links -->
-    <section id="contact">
-      <p class="section-label">Contact</p>
-      <div class="contact-list">
-        <a href="mailto:you@example.com"><span class="contact-label">email</span> you@example.com</a>
-        <a href="https://github.com/" target="_blank" rel="noopener"><span class="contact-label">github</span> github.com/yourname</a>
-        <a href="https://linkedin.com/" target="_blank" rel="noopener"><span class="contact-label">linkedin</span> linkedin.com/in/yourname</a>
-        <a href="https://x.com/" target="_blank" rel="noopener"><span class="contact-label">x / twitter</span> @yourname</a>
-      </div>
-    </section>
-
-    <footer>
-      <span>Built by hand, updated 2026.</span>
-      <a href="#about">Back to top ↑</a>
-    </footer>
-
-  </div>
+    </div>
 </div>
 
 </body>
