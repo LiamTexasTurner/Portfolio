@@ -500,7 +500,7 @@ A capsule movement / Animation system for humanoid bipeds that I tried to make a
               <h3 class="project-title">Game Prototype</h3>
             </div>
             <p class="project-desc">A movement shooter concept</p>
-            <p class="project-body">why make all these things if you dont make a game with them? well I tried to solve that by thinking of a game concept that combined all of the things I had been working on and instead of subjecting would be players to some of my programmer art I used some assets from one of my faviourte games</p>
+            <p class="project-body">why make all these things if you dont make a game with them? well I tried to solve that by thinking of a game concept that combined all of the things I had been working on and instead of subjecting would be players to some of my programmer art I used some assets from one of my favioute games</p>
 
             <video class="project-video" muted loop autoplay playsinline controls width="640" height="360" onloadedmetadata="this.volume=0.25">
               <source src="media/Prototype/chips_intro_reduced_c.mp4" type="video/mp4">
@@ -529,7 +529,7 @@ A capsule movement / Animation system for humanoid bipeds that I tried to make a
             <div class="project-head">
               <h3 class="project-title">Narrative Pro</h3>
             </div>
-            <p class="project-desc">A running collection of small experiments — shader sketches, procedural generation toys, and other things that didn't need their own repo.</p>
+            <p class="project-desc">Unreal engie plugin</p>
 
             <!-- EDIT: no demo clip yet — swap for a <video class="project-video"> like the pattern above once one exists. -->
             <div class="project-video-placeholder" aria-hidden="true">No preview yet</div>
@@ -641,6 +641,47 @@ A capsule movement / Animation system for humanoid bipeds that I tried to make a
         });
       });
     });
+  })();
+
+  // On mobile, move each project's body copy to the top of its "see more"
+  // panel. The body sits outside <details> in the markup, so CSS ordering
+  // can't do this — it has to be an actual DOM move, undone on desktop.
+  (function(){
+    var mq = window.matchMedia('(max-width:600px)');
+    var entries = [];
+
+    document.querySelectorAll('.project').forEach(function(project){
+      var body = project.querySelector('.project-body');
+      var details = project.querySelector('details.project-more');
+      var summary = details ? details.querySelector('summary') : null;
+      if(body && summary){
+        entries.push({
+          body: body,
+          summary: summary,
+          home: body.parentNode,
+          anchor: body.nextSibling  // remembered so desktop can put it back
+        });
+      }
+    });
+
+    function apply(isMobile){
+      entries.forEach(function(e){
+        if(isMobile){
+          if(e.body.parentNode !== e.summary.parentNode){
+            e.summary.insertAdjacentElement('afterend', e.body);
+          }
+        } else if(e.body.parentNode !== e.home){
+          e.home.insertBefore(e.body, e.anchor);
+        }
+      });
+    }
+
+    apply(mq.matches);
+    if(mq.addEventListener){
+      mq.addEventListener('change', function(ev){ apply(ev.matches); });
+    } else if(mq.addListener){
+      mq.addListener(function(ev){ apply(ev.matches); });
+    }
   })();
 </script>
 </body>
