@@ -312,8 +312,21 @@
     background:color-mix(in srgb, var(--ink) 8%, transparent);
   }
 
+  /* static "Soon" placeholder — same type as the summary label, but not a
+     link: no underline, no pointer, nothing to focus or click. */
+  .project-soon{
+    display:inline-block;
+    margin-top:12px;
+    font-weight:500;
+    font-size:15.1px;
+    color:var(--ink);
+    text-decoration:none;
+    cursor:default;
+  }
+
   /* download link — shares the "Read more" summary styling, sits above it */
-  .project-download{
+  .project-download,
+  .project-link{
     display:inline-flex;
     align-items:center;
     gap:0.45em;
@@ -325,13 +338,16 @@
   }
   /* underline the label only, so the icon stays clean — same treatment as
      the "Read more" summary and its arrow */
-  .project-download .label{
+  .project-download .label,
+  .project-link .label{
     text-decoration:underline;
     text-underline-offset:2px;
   }
-  .project-download:hover{ color:var(--accent-1); }
+  .project-download:hover,
+  .project-link:hover{ color:var(--accent-1); }
   /* inline SVG: scales with the text via 1em and is drawn in currentColor */
-  .dl-icon{
+  .dl-icon,
+  .link-icon{
     width:1em;
     height:1em;
     flex:none;
@@ -435,7 +451,8 @@
   footer a{ color:var(--ink-muted); }
   footer a:hover{ color:var(--accent-1); }
 
-  @media (max-width:600px){
+  /* "mobile" = portrait: height >= width. Landscape gets the desktop layout. */
+  @media (orientation:portrait){
     body{ padding:12px 8px; }
     .content{ padding:30px 22px 36px; }
     nav.links{ padding:20px 22px; }
@@ -458,7 +475,7 @@
       <!-- <p class="eyebrow">Portfolio</p> -->
       <p class="eyebrow"></p>
       <h1 class="name">Liam Turner<span class="cursor">_</span></h1>
-      <p class="tagline">I'm an Animation / AI programmer that has been working in the industry for a number of years.<span class="tagline-more"> This is just a little hub for some of my faviourte projects I've made along with a selection of the games and tools I've worked on. Hope you find it interseting and play some of it :)</span></p>
+      <p class="tagline">I'm an Animation / AI programmer working on games and tools in Unreal and custom engines.<span class="tagline-more"> This is just a little hub for some of my faviourte projects I've made along with a selection of the games and tools I've worked on. Hope you find it interseting and play some of it :)</span></p>
       <!-- <p class="tagline">If you want to get in contact for work or just some question about this stuff feel free to reach out to me, cheers</p> -->
 
       <hr class="rule">
@@ -484,7 +501,7 @@
             </video>
 
             <div class="project-meta">
-              <span class="project-tags"><span>C++</span><span>OpenGL</span></span>
+              <span class="project-tags"><span>C++</span><span>Unreal Engine</span></span>
             </div>
             <!-- EDIT: download link — point href at the real file and
                  keep the download attribute so it saves rather than opens. -->
@@ -527,7 +544,7 @@ t <span class="c-op">+=</span> dt<span class="c-op">;</span>
             <div class="project-head">
               <h3 class="project-title">Potion</h3>
             </div>
-            <p class="project-desc">An animation framwork wrtien in C++ OpenGL'</p>
+            <p class="project-desc">An animation framwork wrtien in C++ OpenGL using state machines and ML</p>
             <p class="project-body">Recently I've been doing alot of experimentation with 3rd gameplay mechanics so I decided it was time to finally create some base framework fo which to build these ideas of instead of having to make it from scratch every time.... So I made potion.
 A capsule movement / Animation system for humanoid bipeds that I tried to make as compatible with what ever engine architure I had in mind for that week'</p>
 
@@ -537,7 +554,7 @@ A capsule movement / Animation system for humanoid bipeds that I tried to make a
             </video>
 
             <div class="project-meta">
-              <span class="project-tags"><span>Rust</span><span>Library</span></span>
+              <span class="project-tags"><span>C++</span><span>OpenGL</span><span>Pyton</span></span>
             </div>
             <!-- EDIT: download link — point href at the real file and
                  keep the download attribute so it saves rather than opens. -->
@@ -560,11 +577,12 @@ A capsule movement / Animation system for humanoid bipeds that I tried to make a
             </video>
 
             <div class="project-meta">
-              <span class="project-tags"><span>Python</span><span>CLI</span></span>
+              <span class="project-tags"><span>C++</span><span>Unreal Engine</span></span>
             </div>
-            <!-- EDIT: download link — point href at the real file and
-                 keep the download attribute so it saves rather than opens. -->
-            
+            <!-- EDIT: no download yet — static placeholder in the slot the
+                 download link occupies on the other projects. -->
+            <span class="project-soon">Demo avalibe soon</span>
+
             <details class="project-more">
               <summary><span class="label-closed">Read more</span><span class="label-open">Show less</span><svg class="more-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M12 4v15"/><path d="M6.5 13 12 19 17.5 13"/></svg></summary>
               <p class="project-more-text">Fieldnotes reads a flat folder of dated Markdown files and turns them into a browsable log with almost nothing to set up — no themes to pick, no plugins to install, no build pipeline to babysit. It exists because every other static-site generator felt like overkill for what is, in practice, a running list of entries in date order.</p>
@@ -591,11 +609,11 @@ A capsule movement / Animation system for humanoid bipeds that I tried to make a
             <div class="project-video-placeholder" aria-hidden="true">No preview yet</div>
 
             <div class="project-meta">
-              <span class="project-tags"><span>GLSL</span><span>Misc</span></span>
+              <span class="project-tags"><span>Blueprint</span><span>Control rig</span><span>Unreal Engine</span></span>
             </div>
             <!-- EDIT: download link — point href at the real file and
                  keep the download attribute so it saves rather than opens. -->
-            <a class="project-download" href="media/skelter/navmesh_clip.mp4" download><span class="label">Download plugin</span><svg class="dl-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M12 3v12"/><path d="M7 10.5 12 15.5 17 10.5"/><path d="M4.5 15.5v4h15v-4"/></svg></a>
+            <a class="project-link" href="https://github.com/LiamTexasTurner" target="_blank" rel="noopener"><span class="label">Link</span><svg class="link-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/></svg></a>
             <details class="project-more">
               <summary><span class="label-closed">Read more</span><span class="label-open">Show less</span><svg class="more-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M12 4v15"/><path d="M6.5 13 12 19 17.5 13"/></svg></summary>
               <p class="project-more-text">A loose grab-bag of one-off shader and procgen experiments that never grew into anything bigger than a single file: raymarched noise fields, a couple of terrain erosion sketches, an attempt at cloud rendering that got shelved. Kept together here mostly so they don't get lost in random folders.</p>
@@ -631,7 +649,7 @@ A capsule movement / Animation system for humanoid bipeds that I tried to make a
             <a href="https://github.com/" target="_blank" rel="noopener"><span class="contact-label">github</span>
               <a href="https://www.linkedin.com/in/liam-turner-542a21310/" target="_blank" rel="noopener"><span class="contact-label">linkedin</span>
                 <a href="https://www.youtube.com/@Manray_Gaming" target="_blank" rel="noopener"><span class="contact-label">youtube</span>
-                  <a href="https://x.com/" target="_blank" rel="noopener"><span class="contact-label">x / twitter</span>
+                  
         </div>
       </section>
 
@@ -647,10 +665,10 @@ A capsule movement / Animation system for humanoid bipeds that I tried to make a
 
 <script>
   // EDIT: on mobile, hide the nav bar on scroll-down and reveal it on
-  // scroll-up (matches the "600px" breakpoint used elsewhere in the CSS).
+  // scroll-up (matches the portrait breakpoint used elsewhere in the CSS).
   (function(){
     var nav = document.querySelector('nav.links');
-    var isMobile = window.matchMedia('(max-width:600px)');
+    var isMobile = window.matchMedia('(orientation:portrait)');
     var lastY = window.scrollY;
 
     window.addEventListener('scroll', function(){
@@ -706,11 +724,11 @@ A capsule movement / Animation system for humanoid bipeds that I tried to make a
   // panel. The body sits outside <details> in the markup, so CSS ordering
   // can't do this — it has to be an actual DOM move, undone on desktop.
   (function(){
-    var mq = window.matchMedia('(max-width:600px)');
+    var mq = window.matchMedia('(orientation:portrait)');
     var entries = [];
 
     document.querySelectorAll('.project').forEach(function(project){
-      var body e= project.querySelector('.project-body');
+      var body = project.querySelector('.project-body');
       var details = project.querySelector('details.project-more');
       var summary = details ? details.querySelector('summary') : null;
       if(body && summary){
