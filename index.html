@@ -172,7 +172,7 @@
     color:var(--accent-2);
     animation:blink 1.1s step-end infinite;
   }
-  @media (prefers-reduced-motion: reduce){ .cursor{ animation:none; } }
+  @media (prefers-reduced-motion: reduce){ .cursor{ animation:none; } .more-icon{ transition:none; } }
   @keyframes blink{ 50%{ opacity:0; } }
 
   .tagline{
@@ -312,19 +312,64 @@
     background:color-mix(in srgb, var(--ink) 8%, transparent);
   }
 
+  /* download link — shares the "Read more" summary styling, sits above it */
+  .project-download{
+    display:inline-flex;
+    align-items:center;
+    gap:0.45em;
+    margin-top:12px;
+    font-weight:500;
+    font-size:15.1px;
+    color:var(--ink);
+    text-decoration:none;
+  }
+  /* underline the label only, so the icon stays clean — same treatment as
+     the "Read more" summary and its arrow */
+  .project-download .label{
+    text-decoration:underline;
+    text-underline-offset:2px;
+  }
+  .project-download:hover{ color:var(--accent-1); }
+  /* inline SVG: scales with the text via 1em and is drawn in currentColor */
+  .dl-icon{
+    width:1em;
+    height:1em;
+    flex:none;
+    color:var(--accent-2);
+    transform:translateY(0.5px);
+  }
+
   .project-more{ margin-top:10px; }
   .project-more summary{
+    display:inline-flex;
+    align-items:center;
+    gap:0.45em;
     cursor:pointer;
     font-weight:500;
     font-size:15.1px;
     list-style:none;
     color:var(--ink);
+    text-decoration:none;
+  }
+  /* underline the label only — an underline on the summary itself propagates
+     to the ::after arrow, and a child element can't opt back out of it */
+  .project-more summary .label-closed,
+  .project-more summary .label-open{
     text-decoration:underline;
     text-underline-offset:2px;
   }
   .project-more summary::-webkit-details-marker{ display:none; }
-  .project-more summary::before{ content:"→ "; color:var(--accent-2); text-decoration:none; }
-  .project-more[open] summary::before{ content:"↓ "; }
+  /* same geometry and stroke-width as .dl-icon so the two arrows match.
+     Drawn pointing down; the closed state rotates it to point right. */
+  .more-icon{
+    width:1em;
+    height:1em;
+    flex:none;
+    color:var(--accent-2);
+    transform:rotate(-90deg);
+    transition:transform .18s ease;
+  }
+  .project-more[open] summary .more-icon{ transform:rotate(0deg); }
   .project-more summary:hover{ color:var(--accent-1); }
   .project-more summary .label-open{ display:none; }
   .project-more[open] summary .label-closed{ display:none; }
@@ -395,6 +440,8 @@
     .content{ padding:30px 22px 36px; }
     nav.links{ padding:20px 22px; }
     .project-head{ flex-direction:column; align-items:flex-start; }
+    /* keep only the first sentence of the intro on small screens */
+    .tagline-more{ display:none; }
   }
 </style>
 </head>
@@ -411,7 +458,7 @@
       <!-- <p class="eyebrow">Portfolio</p> -->
       <p class="eyebrow"></p>
       <h1 class="name">Liam Turner<span class="cursor">_</span></h1>
-      <p class="tagline">I'm an Animation / AI programmer that has been working in the industry for a number of years. This is just a little hub for some of my faviourte projects I've made along with a selection of the games and tools I've worked on. Hope you find it interseting and play some of it :)</p>
+      <p class="tagline">I'm an Animation / AI programmer that has been working in the industry for a number of years.<span class="tagline-more"> This is just a little hub for some of my faviourte projects I've made along with a selection of the games and tools I've worked on. Hope you find it interseting and play some of it :)</span></p>
       <!-- <p class="tagline">If you want to get in contact for work or just some question about this stuff feel free to reach out to me, cheers</p> -->
 
       <hr class="rule">
@@ -439,8 +486,11 @@
             <div class="project-meta">
               <span class="project-tags"><span>C++</span><span>OpenGL</span></span>
             </div>
+            <!-- EDIT: download link — point href at the real file and
+                 keep the download attribute so it saves rather than opens. -->
+            <a class="project-download" href="media/skelter/navmesh_clip.mp4" download><span class="label">Demo</span><svg class="dl-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M12 3v12"/><path d="M7 10.5 12 15.5 17 10.5"/><path d="M4.5 15.5v4h15v-4"/></svg></a>
             <details class="project-more">
-              <summary><span class="label-closed">see more</span><span class="label-open">see less</span></summary>
+              <summary><span class="label-closed">Read more</span><span class="label-open">Show less</span><svg class="more-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M12 4v15"/><path d="M6.5 13 12 19 17.5 13"/></svg></summary>
               <p class="project-more-text">Built as an internal tool for iterating on a movement shooter's navmesh, this viewer scrubs through captured animation frames alongside the mesh data so traversal edges and drop-offs can be checked without booting the full game. It grew out of needing fast turnaround on retargeting fixes: load a clip, spot the foot-sliding or clipping issue, patch it, reload — no editor restart required.</p>
 
               <!-- EDIT: code block — see the .code-block rules in the stylesheet
@@ -489,8 +539,11 @@ A capsule movement / Animation system for humanoid bipeds that I tried to make a
             <div class="project-meta">
               <span class="project-tags"><span>Rust</span><span>Library</span></span>
             </div>
+            <!-- EDIT: download link — point href at the real file and
+                 keep the download attribute so it saves rather than opens. -->
+            <a class="project-download" href="media/potion/potion clip.mp4" download><span class="label">Demo</span><svg class="dl-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M12 3v12"/><path d="M7 10.5 12 15.5 17 10.5"/><path d="M4.5 15.5v4h15v-4"/></svg></a>
             <details class="project-more">
-              <summary><span class="label-closed">see more</span><span class="label-open">see less</span></summary>
+              <summary><span class="label-closed">Read more</span><span class="label-open">Show less</span><svg class="more-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M12 4v15"/><path d="M6.5 13 12 19 17.5 13"/></svg></summary>
               <p class="project-more-text">Loam parses a small config DSL into a typed tree with real error locations instead of a generic "invalid syntax" message. It started as a way to avoid pulling in a full serialization framework for tools that only ever need a handful of settings, and the combinator approach made it easy to add new field types without touching the core parser.</p>
             </details>
           </div>
@@ -509,8 +562,11 @@ A capsule movement / Animation system for humanoid bipeds that I tried to make a
             <div class="project-meta">
               <span class="project-tags"><span>Python</span><span>CLI</span></span>
             </div>
+            <!-- EDIT: download link — point href at the real file and
+                 keep the download attribute so it saves rather than opens. -->
+            
             <details class="project-more">
-              <summary><span class="label-closed">see more</span><span class="label-open">see less</span></summary>
+              <summary><span class="label-closed">Read more</span><span class="label-open">Show less</span><svg class="more-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M12 4v15"/><path d="M6.5 13 12 19 17.5 13"/></svg></summary>
               <p class="project-more-text">Fieldnotes reads a flat folder of dated Markdown files and turns them into a browsable log with almost nothing to set up — no themes to pick, no plugins to install, no build pipeline to babysit. It exists because every other static-site generator felt like overkill for what is, in practice, a running list of entries in date order.</p>
             </details>
           </div>
@@ -537,8 +593,11 @@ A capsule movement / Animation system for humanoid bipeds that I tried to make a
             <div class="project-meta">
               <span class="project-tags"><span>GLSL</span><span>Misc</span></span>
             </div>
+            <!-- EDIT: download link — point href at the real file and
+                 keep the download attribute so it saves rather than opens. -->
+            <a class="project-download" href="media/skelter/navmesh_clip.mp4" download><span class="label">Download plugin</span><svg class="dl-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M12 3v12"/><path d="M7 10.5 12 15.5 17 10.5"/><path d="M4.5 15.5v4h15v-4"/></svg></a>
             <details class="project-more">
-              <summary><span class="label-closed">see more</span><span class="label-open">see less</span></summary>
+              <summary><span class="label-closed">Read more</span><span class="label-open">Show less</span><svg class="more-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M12 4v15"/><path d="M6.5 13 12 19 17.5 13"/></svg></summary>
               <p class="project-more-text">A loose grab-bag of one-off shader and procgen experiments that never grew into anything bigger than a single file: raymarched noise fields, a couple of terrain erosion sketches, an attempt at cloud rendering that got shelved. Kept together here mostly so they don't get lost in random folders.</p>
             </details>
           </div>
@@ -632,7 +691,7 @@ A capsule movement / Animation system for humanoid bipeds that I tried to make a
     });
   })();
 
-  // Collapse any open "see more" panels when a nav link is clicked.
+  // Collapse any open "Read more" panels when a nav link is clicked.
   (function(){
     document.querySelectorAll('nav.links a').forEach(function(link){
       link.addEventListener('click', function(){
@@ -643,7 +702,7 @@ A capsule movement / Animation system for humanoid bipeds that I tried to make a
     });
   })();
 
-  // On mobile, move each project's body copy to the top of its "see more"
+  // On mobile, move each project's body copy to the top of its "Read more"
   // panel. The body sits outside <details> in the markup, so CSS ordering
   // can't do this — it has to be an actual DOM move, undone on desktop.
   (function(){
@@ -651,7 +710,7 @@ A capsule movement / Animation system for humanoid bipeds that I tried to make a
     var entries = [];
 
     document.querySelectorAll('.project').forEach(function(project){
-      var body = project.querySelector('.project-body');
+      var body e= project.querySelector('.project-body');
       var details = project.querySelector('details.project-more');
       var summary = details ? details.querySelector('summary') : null;
       if(body && summary){
