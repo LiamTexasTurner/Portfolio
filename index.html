@@ -504,6 +504,39 @@
       lastY = y;
     }, { passive:true });
   })();
+
+  // Force project clips to restart at the end, in case the native `loop`
+  // attribute stalls (heavy 4K HEVC decodes can drop the loop).
+  (function(){
+    document.querySelectorAll('video.project-video').forEach(function(v){
+      v.loop = true;
+      v.addEventListener('ended', function(){
+        v.currentTime = 0;
+        var p = v.play();
+        if(p && p.catch){ p.catch(function(){}); }
+      });
+      // Belt and braces: if playback parks on the last frame without ever
+      // firing "ended", nudge it back to the start.
+      v.addEventListener('timeupdate', function(){
+        if(v.duration && v.currentTime >= v.duration - 0.05){
+          v.currentTime = 0;
+          var p = v.play();
+          if(p && p.catch){ p.catch(function(){}); }
+        }
+      });
+    });
+  })();
+
+  // Collapse any open "see more" panels when a nav link is clicked.
+  (function(){
+    document.querySelectorAll('nav.links a').forEach(function(link){
+      link.addEventListener('click', function(){
+        document.querySelectorAll('details.project-more[open]').forEach(function(d){
+          d.open = false;
+        });
+      });
+    });
+  })();
 </script>
 </body>
 </html>
