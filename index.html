@@ -82,7 +82,7 @@
     background:var(--bg);
     color:var(--ink);
     font-family:'IBM Plex Mono', ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
-    font-size:14px;
+    font-size:15.4px;
     line-height:1.5;
     -webkit-font-smoothing:antialiased;
     padding:24px 14px;
@@ -92,7 +92,7 @@
   }
   a{ color:var(--ink); text-decoration:underline; text-underline-offset:2px; }
   a:hover{ color:var(--accent-1); }
-  a:focus-visible, button:focus-visible{
+  a:focus-visible, button:focus-visible, summary:focus-visible{
     outline:2px solid var(--focus); outline-offset:2px; border-radius:2px;
   }
 
@@ -113,7 +113,7 @@
     top:0;
     z-index:10;
     background:var(--surface);
-    font-size:15px;
+    font-size:16.5px;
     letter-spacing:.02em;
     padding:20px 50px;
     border-bottom:1px solid var(--border);
@@ -131,14 +131,14 @@
 
   .eyebrow{
     color:var(--ink-muted);
-    font-size:12px;
+    font-size:13.2px;
     letter-spacing:.12em;
     text-transform:uppercase;
     margin:0 0 6px;
   }
   h1.name{
     margin:0 0 8px;
-    font-size:clamp(26px, 5vw, 34px);
+    font-size:clamp(29px, 5.5vw, 37px);
     font-weight:100;
     letter-spacing:.3px;
     line-height:1.2;
@@ -154,7 +154,7 @@
   .tagline{
     margin:0;
     color:var(--ink-muted);
-    font-size:14.5px;
+    font-size:16px;
     line-height:1.8;
   }
 
@@ -174,7 +174,7 @@
 
   h2.section-title{
     font-weight:100;
-    font-size:22px;
+    font-size:clamp(29px, 5.5vw, 37px);
     letter-spacing:.3px;
     margin:0 0 14px;
     line-height:1.2;
@@ -190,11 +190,37 @@
   .skills-line{
     margin-top:18px;
     color:var(--ink-muted);
-    font-size:13.5px;
+    font-size:14.85px;
+  }
+
+  .about-image{
+    display:block;
+    width:100%;
+    height:auto;
+    margin:14px auto;
+    border:2px solid var(--border);
+  }
+  .about-image-placeholder{
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    width:100%;
+    aspect-ratio:16/9;
+    margin:14px auto;
+    border:2px dashed var(--border);
+    background:var(--surface);
+    color:var(--ink-muted);
+    font-size:13.75px;
+    letter-spacing:.08em;
+    text-transform:uppercase;
   }
 
   /* ---- projects ---- */
-  .project + .project{ margin-top:36px; }
+  .project + .project{
+    margin-top:36px;
+    padding-top:28px;
+    border-top:1px solid var(--border);
+  }
 
   .project-head{
     display:flex;
@@ -205,13 +231,8 @@
   }
   .project-title{
     margin:0;
-    font-size:17px;
+    font-size:20.9px;
     font-weight:600;
-  }
-  .project-year{
-    font-size:12px;
-    color:var(--ink-muted);
-    font-variant-numeric:tabular-nums;
   }
   .project-desc{
     margin:8px 0 0;
@@ -225,20 +246,59 @@
     border:2px solid var(--border);
     background:var(--surface);
   }
+  .project-video-placeholder{
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    width:100%;
+    aspect-ratio:16/9;
+    margin-top:14px;
+    border:2px dashed var(--border);
+    background:var(--surface);
+    color:var(--ink-muted);
+    font-size:13.75px;
+    letter-spacing:.08em;
+    text-transform:uppercase;
+  }
   .project-meta{
     margin-top:12px;
     display:flex;
     flex-wrap:wrap;
     gap:8px 14px;
     align-items:center;
-    font-size:12.5px;
+    font-size:16.5px;
   }
   .project-tags{
+    display:flex;
+    flex-wrap:wrap;
+    gap:6px;
     color:var(--ink-muted);
   }
-  .project-tags span:not(:last-child)::after{ content:" · "; }
-  .project-link{ font-weight:500; }
-  .project-link::before{ content:"→ "; color:var(--accent-2); text-decoration:none; }
+  .project-tags span{
+    border:1px solid var(--border);
+    border-radius:5px;
+    padding:3px 10px;
+    background:color-mix(in srgb, var(--ink) 8%, transparent);
+  }
+
+  .project-more{ margin-top:10px; }
+  .project-more summary{
+    cursor:pointer;
+    font-weight:500;
+    font-size:15.1px;
+    list-style:none;
+    color:var(--ink);
+    text-decoration:underline;
+    text-underline-offset:2px;
+  }
+  .project-more summary::-webkit-details-marker{ display:none; }
+  .project-more summary::before{ content:"→ "; color:var(--accent-2); text-decoration:none; }
+  .project-more[open] summary::before{ content:"↓ "; }
+  .project-more summary:hover{ color:var(--accent-1); }
+  .project-more summary .label-open{ display:none; }
+  .project-more[open] summary .label-closed{ display:none; }
+  .project-more[open] summary .label-open{ display:inline; }
+  .project-more-text{ margin:10px 0 0; color:var(--ink-muted); }
 
   /* ---- contact ---- */
   .contact-list{
@@ -258,7 +318,7 @@
   footer{
     margin-top:40px;
     color:var(--ink-muted);
-    font-size:12.5px;
+    font-size:13.75px;
     display:flex;
     justify-content:space-between;
     flex-wrap:wrap;
@@ -285,9 +345,11 @@
     <div class="content">
 
       <!-- EDIT: name, tagline -->
-      <p class="eyebrow">Portfolio</p>
+      <!-- <p class="eyebrow">Portfolio</p> -->
+      <p class="eyebrow"></p>
       <h1 class="name">Liam Turner<span class="cursor">_</span></h1>
-      <p class="tagline">Software engineer working on real-time animation and tools. I build things, break things, and occasionally write about both.</p>
+      <p class="tagline">I'm an Animation / AI programmer that has been working in the industry for a number of years and this is just a little hub for some of my faviourte projects I've made. Hope you find it interseting and play some of it :)</p>
+      <!-- <p class="tagline">If you want to get in contact for work or just some question about this stuff feel free to reach out to me, cheers</p> -->
 
       <hr class="rule">
 
@@ -299,9 +361,8 @@
           <div class="project">
             <div class="project-head">
               <h3 class="project-title">Movement Shooter Navmesh</h3>
-              <span class="project-year">2025</span>
             </div>
-            <p class="project-desc">A lightweight viewer for skeletal animation data, built for fast iteration on retargeting and motion-matching datasets.</p>
+            <p class="project-desc">A fully custom implementation of a Navmesh / Path finding system for AI to traverse complex 3D spaces by utilizing movement mechanics you would find in a 3rd person movement shooter, without any reliance on navlinks or unerlying Unreal Engine systems</p>
 
             <!-- EDIT: video pattern — muted + loop + autoplay, sourced from a
                  relative path, with native controls (play/pause/scrub/volume).
@@ -313,44 +374,68 @@
 
             <div class="project-meta">
               <span class="project-tags"><span>C++</span><span>OpenGL</span></span>
-              <a class="project-link" href="#">View project</a>
             </div>
+            <details class="project-more">
+              <summary><span class="label-closed">see more</span><span class="label-open">see less</span></summary>
+              <p class="project-more-text">Built as an internal tool for iterating on a movement shooter's navmesh, this viewer scrubs through captured animation frames alongside the mesh data so traversal edges and drop-offs can be checked without booting the full game. It grew out of needing fast turnaround on retargeting fixes: load a clip, spot the foot-sliding or clipping issue, patch it, reload — no editor restart required.</p>
+            </details>
           </div>
 
           <div class="project">
             <div class="project-head">
-              <h3 class="project-title">Loam</h3>
-              <span class="project-year">2024</span>
+              <h3 class="project-title">Potion</h3>
             </div>
-            <p class="project-desc">A small parser combinator library for describing and validating structured config files without a build step.</p>
+            <p class="project-desc">An animation framwork wrtien in C++ OpenGL</p>
+
+            
+            <video class="project-video" muted loop autoplay playsinline controls width="640" height="360" onloadedmetadata="this.volume=0.25">
+              <source src="media/potion/potion clip.mp4" type="video/mp4">
+            </video>
+
             <div class="project-meta">
               <span class="project-tags"><span>Rust</span><span>Library</span></span>
-              <a class="project-link" href="#">View project</a>
             </div>
+            <details class="project-more">
+              <summary><span class="label-closed">see more</span><span class="label-open">see less</span></summary>
+              <p class="project-more-text">Loam parses a small config DSL into a typed tree with real error locations instead of a generic "invalid syntax" message. It started as a way to avoid pulling in a full serialization framework for tools that only ever need a handful of settings, and the combinator approach made it easy to add new field types without touching the core parser.</p>
+            </details>
           </div>
 
           <div class="project">
             <div class="project-head">
-              <h3 class="project-title">Fieldnotes</h3>
-              <span class="project-year">2023</span>
+              <h3 class="project-title">Game Prototype</h3>
             </div>
             <p class="project-desc">A static-site generator built specifically for long-running project logs and dated writing, with almost no configuration.</p>
+
+            <video class="project-video" muted loop autoplay playsinline controls width="640" height="360" onloadedmetadata="this.volume=0.25">
+              <source src="media/Prototype/chips_intro_reduced_c.mp4" type="video/mp4">
+            </video>
+
             <div class="project-meta">
               <span class="project-tags"><span>Python</span><span>CLI</span></span>
-              <a class="project-link" href="#">View project</a>
             </div>
+            <details class="project-more">
+              <summary><span class="label-closed">see more</span><span class="label-open">see less</span></summary>
+              <p class="project-more-text">Fieldnotes reads a flat folder of dated Markdown files and turns them into a browsable log with almost nothing to set up — no themes to pick, no plugins to install, no build pipeline to babysit. It exists because every other static-site generator felt like overkill for what is, in practice, a running list of entries in date order.</p>
+            </details>
           </div>
 
           <div class="project">
             <div class="project-head">
-              <h3 class="project-title">./sketches</h3>
-              <span class="project-year">Ongoing</span>
+              <h3 class="project-title">Narrative Pro</h3>
             </div>
             <p class="project-desc">A running collection of small experiments — shader sketches, procedural generation toys, and other things that didn't need their own repo.</p>
+
+            <!-- EDIT: no demo clip yet — swap for a <video class="project-video"> like the pattern above once one exists. -->
+            <div class="project-video-placeholder" aria-hidden="true">No preview yet</div>
+
             <div class="project-meta">
               <span class="project-tags"><span>GLSL</span><span>Misc</span></span>
-              <a class="project-link" href="#">View project</a>
             </div>
+            <details class="project-more">
+              <summary><span class="label-closed">see more</span><span class="label-open">see less</span></summary>
+              <p class="project-more-text">A loose grab-bag of one-off shader and procgen experiments that never grew into anything bigger than a single file: raymarched noise fields, a couple of terrain erosion sketches, an attempt at cloud rendering that got shelved. Kept together here mostly so they don't get lost in random folders.</p>
+            </details>
           </div>
 
         </div>
@@ -363,6 +448,10 @@
         <h2 class="section-title">About</h2>
         <div class="prose">
           <p>I'm a software engineer focused on animation systems, tooling and the occasional weird side project. Most of my work sits somewhere between graphics programming and developer tooling — things that make other people's work faster or their output look better.</p>
+
+          <img class="about-image" src="media/about/000052160010-2.jpg" alt="Portrait of Liam Turner">
+
+
           <p class="muted">Previously at a couple of studios you've probably heard of. Based in Sydney, usually awake at odd hours debugging something that only breaks on Tuesdays.</p>
         </div>
         <p class="skills-line">C++ · Python · Rust · OpenGL · Animation Systems · Tooling</p>
@@ -374,10 +463,11 @@
       <section id="contact">
         <h2 class="section-title">Contact</h2>
         <div class="contact-list">
-          <a href="mailto:you@example.com"><span class="contact-label">email</span> you@example.com</a>
-          <a href="https://github.com/" target="_blank" rel="noopener"><span class="contact-label">github</span> github.com/yourname</a>
-          <a href="https://linkedin.com/" target="_blank" rel="noopener"><span class="contact-label">linkedin</span> linkedin.com/in/yourname</a>
-          <a href="https://x.com/" target="_blank" rel="noopener"><span class="contact-label">x / twitter</span> @yourname</a>
+          <a href="liamtexasturner@gmail.com"><span class="contact-label">email</span>
+            <a href="https://github.com/" target="_blank" rel="noopener"><span class="contact-label">github</span>
+              <a href="https://www.linkedin.com/in/liam-turner-542a21310/" target="_blank" rel="noopener"><span class="contact-label">linkedin</span>
+                <a href="https://www.youtube.com/@Manray_Gaming" target="_blank" rel="noopener"><span class="contact-label">youtube</span>
+                  <a href="https://x.com/" target="_blank" rel="noopener"><span class="contact-label">x / twitter</span>
         </div>
       </section>
 
