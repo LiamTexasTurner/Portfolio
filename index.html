@@ -52,6 +52,14 @@
     --accent-2:#dc9542;
     --border:#cccccc;
     --focus:#1e687a;
+    --code-bg:#fcfcfc;
+    --code-ink:#333333;
+    --code-border:#cccccc;
+    --code-comment:#679b7c;
+    --code-type:#800000;
+    --code-operator:#0000a0;
+    --code-keyword:#0080c0;
+    --code-number:#ff8000;
   }
   @media (prefers-color-scheme: dark){
     :root:not([data-theme="light"]){
@@ -63,6 +71,14 @@
       --accent-2:#e3a361;
       --border:#343a3e;
       --focus:#5fc2d1;
+      --code-bg:#16191c;
+      --code-ink:#d8d6d0;
+      --code-border:#343a3e;
+      --code-comment:#7fb894;
+      --code-type:#e08b7a;
+      --code-operator:#8ab4f8;
+      --code-keyword:#5fc2d1;
+      --code-number:#e3a361;
     }
   }
   :root[data-theme="dark"]{
@@ -74,6 +90,14 @@
     --accent-2:#e3a361;
     --border:#343a3e;
     --focus:#5fc2d1;
+    --code-bg:#16191c;
+    --code-ink:#d8d6d0;
+    --code-border:#343a3e;
+    --code-comment:#7fb894;
+    --code-type:#e08b7a;
+    --code-operator:#8ab4f8;
+    --code-keyword:#5fc2d1;
+    --code-number:#e3a361;
   }
 
   *{ box-sizing:border-box; }
@@ -234,7 +258,14 @@
     font-size:20.9px;
     font-weight:600;
   }
+  /* tagline directly under the project title */
   .project-desc{
+    margin:8px 0 0;
+    color:var(--ink-muted);
+    font-weight:700;
+  }
+  /* body copy under the tagline — normal weight */
+  .project-body{
     margin:8px 0 0;
     color:var(--ink-muted);
   }
@@ -300,6 +331,38 @@
   .project-more[open] summary .label-open{ display:inline; }
   .project-more-text{ margin:10px 0 0; color:var(--ink-muted); }
 
+  /* ---- code blocks, styled after theorangeduck.com ----
+     Token colours come from the --code-* variables defined in the
+     :root blocks at the top. Wrap tokens in the c-* spans below:
+       c-comment  comments
+       c-keyword  language keywords (if, return, for ...)
+       c-type     types (float, int ...)
+       c-op       operators, brackets, punctuation
+       c-num      numeric literals                                   */
+  .code-block{
+    background:var(--code-bg);
+    color:var(--code-ink);
+    border:2px solid var(--code-border);
+    padding:10px 14px;
+    margin:14px 0 0;
+    font-family:Consolas,'Liberation Mono','DejaVu Sans Mono','Courier New',monospace;
+    font-size:14px;
+    line-height:1.45;
+    white-space:pre;
+    overflow-x:auto;   /* wide lines scroll here rather than the page */
+    tab-size:4;
+  }
+  .code-block code{
+    font:inherit;
+    color:inherit;
+    background:none;
+  }
+  .code-block .c-comment{ color:var(--code-comment); }
+  .code-block .c-keyword{ color:var(--code-keyword); }
+  .code-block .c-type{ color:var(--code-type); }
+  .code-block .c-op{ color:var(--code-operator); }
+  .code-block .c-num{ color:var(--code-number); }
+
   /* ---- contact ---- */
   .contact-list{
     display:flex;
@@ -340,7 +403,7 @@
 <div class="frame-outer">
     <!-- EDIT: nav links -->
     <nav class="links" aria-label="Primary">
-      <a href="#projects">Projects</a><span class="dot">.</span><a href="#about">About</a><span class="dot">.</span><a href="#contact">Contact</a><span class="dot">.</span><a href="https://github.com/" target="_blank" rel="noopener">Github</a>
+      <a href="#projects">Projects</a><span class="dot">.</span><a href="#work">Work</a><span class="dot">.</span><a href="#about">About</a><span class="dot">.</span><a href="#contact">Contact</a><span class="dot">.</span><a href="https://github.com/" target="_blank" rel="noopener">Github</a>
     </nav>
     <div class="content">
 
@@ -348,7 +411,7 @@
       <!-- <p class="eyebrow">Portfolio</p> -->
       <p class="eyebrow"></p>
       <h1 class="name">Liam Turner<span class="cursor">_</span></h1>
-      <p class="tagline">I'm an Animation / AI programmer that has been working in the industry for a number of years and this is just a little hub for some of my faviourte projects I've made. Hope you find it interseting and play some of it :)</p>
+      <p class="tagline">I'm an Animation / AI programmer that has been working in the industry for a number of years. This is just a little hub for some of my faviourte projects I've made along with a selection of the games and tools I've worked on. Hope you find it interseting and play some of it :)</p>
       <!-- <p class="tagline">If you want to get in contact for work or just some question about this stuff feel free to reach out to me, cheers</p> -->
 
       <hr class="rule">
@@ -362,7 +425,8 @@
             <div class="project-head">
               <h3 class="project-title">Movement Shooter Navmesh</h3>
             </div>
-            <p class="project-desc">A fully custom implementation of a Navmesh / Path finding system for AI to traverse complex 3D spaces by utilizing movement mechanics you would find in a 3rd person movement shooter, without any reliance on navlinks or unerlying Unreal Engine systems</p>
+            <p class="project-desc">Fully Custom Navmesh / Path finding system for enemy AI</p>
+            <p class="project-body">feeling a little hard done by with unreals implementation of Recast/Detour I set out to build a system for AI to traverse complex 3D spaces by utilizing movement mechanics you would find in a 3rd person movement shooter, without any reliance on navlinks or unerlying Unreal Engine systems</p>
 
             <!-- EDIT: video pattern — muted + loop + autoplay, sourced from a
                  relative path, with native controls (play/pause/scrub/volume).
@@ -378,6 +442,34 @@
             <details class="project-more">
               <summary><span class="label-closed">see more</span><span class="label-open">see less</span></summary>
               <p class="project-more-text">Built as an internal tool for iterating on a movement shooter's navmesh, this viewer scrubs through captured animation frames alongside the mesh data so traversal edges and drop-offs can be checked without booting the full game. It grew out of needing fast turnaround on retargeting fixes: load a clip, spot the foot-sliding or clipping issue, patch it, reload — no editor restart required.</p>
+
+              <!-- EDIT: code block — see the .code-block rules in the stylesheet
+                   for the list of c-* token classes. -->
+<pre class="code-block"><code data-language="C"><span class="c-comment">// Check if target changed</span>
+<span class="c-keyword">if</span> <span class="c-op">(</span>IsMouseButtonDown<span class="c-op">(</span>MOUSE_RIGHT_BUTTON<span class="c-op">))</span>
+<span class="c-op">{</span>
+    <span class="c-keyword">if</span> <span class="c-op">(</span>g <span class="c-op">!=</span> GetMousePosition<span class="c-op">().</span>y<span class="c-op">)</span>
+    <span class="c-op">{</span>
+        <span class="c-comment">// Update Target</span>
+        g <span class="c-op">=</span> GetMousePosition<span class="c-op">().</span>y<span class="c-op">;</span>
+
+        <span class="c-comment">// Solve for smoothstep parameters `s` and `t`</span>
+        smoothstep_solve<span class="c-op">(</span>et<span class="c-op">,</span> es<span class="c-op">,</span> g <span class="c-op">-</span> x<span class="c-op">,</span> smoothstep_dt<span class="c-op">(</span>et<span class="c-op">,</span> es<span class="c-op">));</span>
+
+        <span class="c-comment">// Set the offset to the difference between the target and current eased value</span>
+        eo <span class="c-op">=</span> x <span class="c-op">-</span> smoothstep<span class="c-op">(</span>et<span class="c-op">,</span> es<span class="c-op">);</span>
+    <span class="c-op">}</span>
+<span class="c-op">}</span>
+
+<span class="c-comment">// Update the easing time</span>
+et <span class="c-op">+=</span> dt <span class="c-op">/</span> max<span class="c-op">(</span>blendtime<span class="c-op">,</span> <span class="c-num">1e-4f</span><span class="c-op">);</span>
+
+<span class="c-comment">// Update the eased value</span>
+x <span class="c-op">=</span> eo <span class="c-op">+</span> smoothstep<span class="c-op">(</span>et<span class="c-op">,</span> es<span class="c-op">);</span>
+
+<span class="c-comment">// Update Time</span>
+t <span class="c-op">+=</span> dt<span class="c-op">;</span>
+</code></pre>
             </details>
           </div>
 
@@ -385,7 +477,9 @@
             <div class="project-head">
               <h3 class="project-title">Potion</h3>
             </div>
-            <p class="project-desc">An animation framwork wrtien in C++ OpenGL</p>
+            <p class="project-desc">An animation framwork wrtien in C++ OpenGL'</p>
+            <p class="project-body">Recently I've been doing alot of experimentation with 3rd gameplay mechanics so I decided it was time to finally create some base framework fo which to build these ideas of instead of having to make it from scratch every time.... So I made potion.
+A capsule movement / Animation system for humanoid bipeds that I tried to make as compatible with what ever engine architure I had in mind for that week'</p>
 
             
             <video class="project-video" muted loop autoplay playsinline controls width="640" height="360" onloadedmetadata="this.volume=0.25">
@@ -419,6 +513,16 @@
               <p class="project-more-text">Fieldnotes reads a flat folder of dated Markdown files and turns them into a browsable log with almost nothing to set up — no themes to pick, no plugins to install, no build pipeline to babysit. It exists because every other static-site generator felt like overkill for what is, in practice, a running list of entries in date order.</p>
             </details>
           </div>
+
+        </div>
+      </section>
+
+      <hr class="rule">
+
+      <!-- EDIT: work list -->
+      <section id="work">
+        <h2 class="section-title">Work</h2>
+        <div class="project-list">
 
           <div class="project">
             <div class="project-head">
