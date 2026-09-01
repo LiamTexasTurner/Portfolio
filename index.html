@@ -1,14 +1,14 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Terminal Portfolio</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@100;400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
-<style>
-  /* ---------------------------------------------------------------
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Terminal Portfolio</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@100;400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+    <style>
+      /* ---------------------------------------------------------------
      HOW TO CUSTOMIZE THIS PAGE
 
      Styled after theorangeduck.com: a single frame made of two
@@ -28,7 +28,7 @@
        --accent-2  inner frame border, rule bars, section markers — orange
        --border    hairline borders (video/image frames)
      Keep the SAME variable name defined in all three blocks (light,
-     dark-via-OS, dark-via-toggle) so both themes stay in sync.
+      dark-via-OS, dark-via-toggle) so both themes stay in sync.
 
      CONTENT — search for "EDIT:" comments further down in the HTML
      to find your name, bio, projects, writing links and contact
@@ -38,361 +38,361 @@
      VIDEOS — same trick theorangeduck.com uses: short muted/looping
      .mp4 clips served as plain files, referenced with a relative
      path, no video host or player library involved. Put your files
-     in a "media/<project-name>/" folder next to this HTML file, then
+      in a "media/<project-name>/" folder next to this HTML file, then
      point a <video> tag at them (see the "Skelter" project below for
      the pattern).
      --------------------------------------------------------------- */
 
-  :root{
-    --bg:#a9a9a9;
-    --surface:#f0f0f0;
-    --ink:#101010;
-    --ink-muted:#585d61;
-    --accent-1:#1e687a;
-    --accent-2:#dc9542;
-    --border:#cccccc;
-    --focus:#1e687a;
-    --code-bg:#fcfcfc;
-    --code-ink:#333333;
-    --code-border:#cccccc;
-    --code-comment:#679b7c;
-    --code-type:#800000;
-    --code-operator:#0000a0;
-    --code-keyword:#0080c0;
-    --code-number:#ff8000;
-  }
-  @media (prefers-color-scheme: dark){
-    :root:not([data-theme="light"]){
-      --bg:#14171a;
-      --surface:#1c2023;
-      --ink:#e8e6e0;
-      --ink-muted:#9aa0a4;
-      --accent-1:#5fc2d1;
-      --accent-2:#e3a361;
-      --border:#343a3e;
-      --focus:#5fc2d1;
-      --code-bg:#16191c;
-      --code-ink:#d8d6d0;
-      --code-border:#343a3e;
-      --code-comment:#7fb894;
-      --code-type:#e08b7a;
-      --code-operator:#8ab4f8;
-      --code-keyword:#5fc2d1;
-      --code-number:#e3a361;
-    }
-  }
-  :root[data-theme="dark"]{
-    --bg:#14171a;
-    --surface:#1c2023;
-    --ink:#e8e6e0;
-    --ink-muted:#9aa0a4;
-    --accent-1:#5fc2d1;
-    --accent-2:#e3a361;
-    --border:#343a3e;
-    --focus:#5fc2d1;
-    --code-bg:#16191c;
-    --code-ink:#d8d6d0;
-    --code-border:#343a3e;
-    --code-comment:#7fb894;
-    --code-type:#e08b7a;
-    --code-operator:#8ab4f8;
-    --code-keyword:#5fc2d1;
-    --code-number:#e3a361;
-  }
+      :root{
+          --bg:#a9a9a9;
+          --surface:#f0f0f0;
+          --ink:#101010;
+          --ink-muted:#585d61;
+          --accent-1:#1e687a;
+          --accent-2:#dc9542;
+          --border:#cccccc;
+          --focus:#1e687a;
+          --code-bg:#fcfcfc;
+          --code-ink:#333333;
+          --code-border:#cccccc;
+          --code-comment:#679b7c;
+          --code-type:#800000;
+          --code-operator:#0000a0;
+          --code-keyword:#0080c0;
+          --code-number:#ff8000;
+      }
+      @media (prefers-color-scheme: dark){
+          :root:not([data-theme="light"]){
+              --bg:#14171a;
+              --surface:#1c2023;
+              --ink:#e8e6e0;
+              --ink-muted:#9aa0a4;
+              --accent-1:#5fc2d1;
+              --accent-2:#e3a361;
+              --border:#343a3e;
+              --focus:#5fc2d1;
+              --code-bg:#16191c;
+              --code-ink:#d8d6d0;
+              --code-border:#343a3e;
+              --code-comment:#7fb894;
+              --code-type:#e08b7a;
+              --code-operator:#8ab4f8;
+              --code-keyword:#5fc2d1;
+              --code-number:#e3a361;
+          }
+      }
+      :root[data-theme="dark"]{
+          --bg:#14171a;
+          --surface:#1c2023;
+          --ink:#e8e6e0;
+          --ink-muted:#9aa0a4;
+          --accent-1:#5fc2d1;
+          --accent-2:#e3a361;
+          --border:#343a3e;
+          --focus:#5fc2d1;
+          --code-bg:#16191c;
+          --code-ink:#d8d6d0;
+          --code-border:#343a3e;
+          --code-comment:#7fb894;
+          --code-type:#e08b7a;
+          --code-operator:#8ab4f8;
+          --code-keyword:#5fc2d1;
+          --code-number:#e3a361;
+      }
 
-  *{ box-sizing:border-box; }
-  html, body{ margin:0; padding:0; }
-  body{
-    background:var(--bg);
-    color:var(--ink);
-    font-family:'IBM Plex Mono', ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
-    font-size:15.4px;
-    line-height:1.5;
-    -webkit-font-smoothing:antialiased;
-    padding:24px 14px;
-  }
-  h1,h2,h3,.mono-head{
-    font-family:'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
-  }
-  a{ color:var(--ink); text-decoration:underline; text-underline-offset:2px; }
-  a:hover{ color:var(--accent-1); }
-  a:focus-visible, button:focus-visible, summary:focus-visible{
-    outline:2px solid var(--focus); outline-offset:2px; border-radius:2px;
-  }
+      *{ box-sizing:border-box; }
+      html, body{ margin:0; padding:0; }
+      body{
+          background:var(--bg);
+          color:var(--ink);
+          font-family:'IBM Plex Mono', ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+          font-size:15.4px;
+          line-height:1.5;
+          -webkit-font-smoothing:antialiased;
+          padding:24px 14px;
+      }
+      h1,h2,h3,.mono-head{
+          font-family:'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+      }
+      a{ color:var(--ink); text-decoration:underline; text-underline-offset:2px; }
+      a:hover{ color:var(--accent-1); }
+      a:focus-visible, button:focus-visible, summary:focus-visible{
+          outline:2px solid var(--focus); outline-offset:2px; border-radius:2px;
+      }
 
-  /* ---- frame ---- */
-  .frame-outer{
-    max-width:1100px;
-    margin:0 auto;
-    border-top:4px solid var(--accent-1);
-    background:var(--surface);
-  }
-  .content{
-    padding:20px 50px 50px;
-  }
+      /* ---- frame ---- */
+      .frame-outer{
+          max-width:1100px;
+          margin:0 auto;
+          border-top:4px solid var(--accent-1);
+          background:var(--surface);
+      }
+      .content{
+          padding:20px 50px 50px;
+      }
 
-  /* ---- top nav: plain text row, dot-separated, no sticky bar ---- */
-  nav.links{
-    position:sticky;
-    top:0;
-    z-index:10;
-    background:var(--surface);
-    font-size:16.5px;
-    letter-spacing:.02em;
-    padding:20px 50px;
-    border-bottom:1px solid var(--border);
-    display:flex;
-    flex-wrap:wrap;
-    align-items:center;
-    row-gap:6px;
-    min-height:36px;
-    transition:transform .25s ease;
-  }
-  nav.links.nav-hidden{
-    transform:translateY(-100%);
-  }
-  nav.links .dot{ color:var(--ink-muted); padding:0 8px; }
+      /* ---- top nav: plain text row, dot-separated, no sticky bar ---- */
+      nav.links{
+          position:sticky;
+          top:0;
+          z-index:10;
+          background:var(--surface);
+          font-size:16.5px;
+          letter-spacing:.02em;
+          padding:20px 50px;
+          border-bottom:1px solid var(--border);
+          display:flex;
+          flex-wrap:wrap;
+          align-items:center;
+          row-gap:6px;
+          min-height:36px;
+          transition:transform .25s ease;
+      }
+      nav.links.nav-hidden{
+          transform:translateY(-100%);
+      }
+      nav.links .dot{ color:var(--ink-muted); padding:0 8px; }
 
-  .eyebrow{
-    color:var(--ink-muted);
-    font-size:13.2px;
-    letter-spacing:.12em;
-    text-transform:uppercase;
-    margin:0 0 6px;
-  }
-  h1.name{
-    margin:0 0 8px;
-    font-size:clamp(29px, 5.5vw, 37px);
-    font-weight:100;
-    letter-spacing:.3px;
-    line-height:1.2;
-  }
-  .cursor{
-    display:inline-block;
-    color:var(--accent-2);
-    animation:blink 1.1s step-end infinite;
-  }
-  @media (prefers-reduced-motion: reduce){ .cursor{ animation:none; } .more-icon{ transition:none; } }
-  @keyframes blink{ 50%{ opacity:0; } }
+      .eyebrow{
+          color:var(--ink-muted);
+          font-size:13.2px;
+          letter-spacing:.12em;
+          text-transform:uppercase;
+          margin:0 0 6px;
+      }
+      h1.name{
+          margin:0 0 8px;
+          font-size:clamp(29px, 5.5vw, 37px);
+          font-weight:100;
+          letter-spacing:.3px;
+          line-height:1.2;
+      }
+      .cursor{
+          display:inline-block;
+          color:var(--accent-2);
+          animation:blink 1.1s step-end infinite;
+      }
+      @media (prefers-reduced-motion: reduce){ .cursor{ animation:none; } .more-icon{ transition:none; } }
+      @keyframes blink{ 50%{ opacity:0; } }
 
-  .tagline{
-    margin:0;
-    color:var(--ink-muted);
-    font-size:16px;
-    line-height:1.8;
-  }
+      .tagline{
+          margin:0;
+          color:var(--ink-muted);
+          font-size:16px;
+          line-height:1.8;
+      }
 
-  /* ---- rule bar used between sections, in place of boxed cards ---- */
-  hr.rule{
-    border:0;
-    height:3px;
-    background:var(--accent-2);
-    margin:20px 0;
-  }
+      /* ---- rule bar used between sections, in place of boxed cards ---- */
+      hr.rule{
+          border:0;
+          height:3px;
+          background:var(--accent-2);
+          margin:20px 0;
+      }
 
-  @media (prefers-reduced-motion: no-preference){
-    html{ scroll-behavior:smooth; }
-  }
+      @media (prefers-reduced-motion: no-preference){
+          html{ scroll-behavior:smooth; }
+      }
 
-  section{ scroll-margin-top:24px; }
+      section{ scroll-margin-top:24px; }
 
-  h2.section-title{
-    font-weight:100;
-    font-size:clamp(29px, 5.5vw, 37px);
-    letter-spacing:.3px;
-    margin:0 0 14px;
-    line-height:1.2;
-  }
+      h2.section-title{
+          font-weight:100;
+          font-size:clamp(29px, 5.5vw, 37px);
+          letter-spacing:.3px;
+          margin:0 0 14px;
+          line-height:1.2;
+      }
 
-  .prose{
-    color:var(--ink);
-    line-height:1.8;
-  }
-  .prose p + p{ margin-top:14px; }
-  .prose .muted{ color:var(--ink-muted); }
+      .prose{
+          color:var(--ink);
+          line-height:1.8;
+      }
+      .prose p + p{ margin-top:14px; }
+      .prose .muted{ color:var(--ink-muted); }
 
-  .skills-line{
-    margin-top:18px;
-    color:var(--ink-muted);
-    font-size:14.85px;
-  }
+      .skills-line{
+          margin-top:18px;
+          color:var(--ink-muted);
+          font-size:14.85px;
+      }
 
-  .about-image{
-    display:block;
-    width:100%;
-    height:auto;
-    margin:14px auto;
-    border:2px solid var(--border);
-  }
-  .about-image-placeholder{
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    width:100%;
-    aspect-ratio:16/9;
-    margin:14px auto;
-    border:2px dashed var(--border);
-    background:var(--surface);
-    color:var(--ink-muted);
-    font-size:13.75px;
-    letter-spacing:.08em;
-    text-transform:uppercase;
-  }
+      .about-image{
+          display:block;
+          width:100%;
+          height:auto;
+          margin:14px auto;
+          border:2px solid var(--border);
+      }
+      .about-image-placeholder{
+          display:flex;
+          align-items:center;
+          justify-content:center;
+          width:100%;
+          aspect-ratio:16/9;
+          margin:14px auto;
+          border:2px dashed var(--border);
+          background:var(--surface);
+          color:var(--ink-muted);
+          font-size:13.75px;
+          letter-spacing:.08em;
+          text-transform:uppercase;
+      }
 
-  /* ---- projects ---- */
-  .project + .project{
-    margin-top:36px;
-    padding-top:28px;
-    border-top:1px solid var(--border);
-  }
+      /* ---- projects ---- */
+      .project + .project{
+          margin-top:36px;
+          padding-top:28px;
+          border-top:1px solid var(--border);
+      }
 
-  .project-head{
-    display:flex;
-    flex-wrap:wrap;
-    align-items:baseline;
-    justify-content:space-between;
-    gap:8px 16px;
-  }
-  .project-title{
-    margin:0;
-    font-size:20.9px;
-    font-weight:600;
-  }
-  /* tagline directly under the project title */
-  .project-desc{
-    margin:8px 0 0;
-    color:color-mix(in srgb, var(--ink) 60%, var(--ink-muted));
-    font-weight:700;
-  }
-  /* body copy under the tagline — normal weight */
-  .project-body{
-    margin:8px 0 0;
-    color:var(--ink-muted);
-  }
-  .project-video{
-    display:block;
-    width:100%;
-    height:auto;
-    margin-top:14px;
-    border:2px solid var(--border);
-    background:var(--surface);
-  }
-  .project-video-placeholder{
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    width:100%;
-    aspect-ratio:16/9;
-    margin-top:14px;
-    border:2px dashed var(--border);
-    background:var(--surface);
-    color:var(--ink-muted);
-    font-size:13.75px;
-    letter-spacing:.08em;
-    text-transform:uppercase;
-  }
-  .project-meta{
-    margin-top:12px;
-    display:flex;
-    flex-wrap:wrap;
-    gap:8px 14px;
-    align-items:center;
-    font-size:16.5px;
-  }
-  .project-tags{
-    display:flex;
-    flex-wrap:wrap;
-    gap:6px;
-    color:var(--ink-muted);
-  }
-  .project-tags span{
-    border:1px solid var(--border);
-    border-radius:5px;
-    padding:3px 10px;
-    background:color-mix(in srgb, var(--ink) 8%, transparent);
-  }
+      .project-head{
+          display:flex;
+          flex-wrap:wrap;
+          align-items:baseline;
+          justify-content:space-between;
+          gap:8px 16px;
+      }
+      .project-title{
+          margin:0;
+          font-size:20.9px;
+          font-weight:600;
+      }
+      /* tagline directly under the project title */
+      .project-desc{
+          margin:8px 0 0;
+          color:color-mix(in srgb, var(--ink) 60%, var(--ink-muted));
+          font-weight:700;
+      }
+      /* body copy under the tagline — normal weight */
+      .project-body{
+          margin:8px 0 0;
+          color:var(--ink-muted);
+      }
+      .project-video{
+          display:block;
+          width:100%;
+          height:auto;
+          margin-top:14px;
+          border:2px solid var(--border);
+          background:var(--surface);
+      }
+      .project-video-placeholder{
+          display:flex;
+          align-items:center;
+          justify-content:center;
+          width:100%;
+          aspect-ratio:16/9;
+          margin-top:14px;
+          border:2px dashed var(--border);
+          background:var(--surface);
+          color:var(--ink-muted);
+          font-size:13.75px;
+          letter-spacing:.08em;
+          text-transform:uppercase;
+      }
+      .project-meta{
+          margin-top:12px;
+          display:flex;
+          flex-wrap:wrap;
+          gap:8px 14px;
+          align-items:center;
+          font-size:16.5px;
+      }
+      .project-tags{
+          display:flex;
+          flex-wrap:wrap;
+          gap:6px;
+          color:var(--ink-muted);
+      }
+      .project-tags span{
+          border:1px solid var(--border);
+          border-radius:5px;
+          padding:3px 10px;
+          background:color-mix(in srgb, var(--ink) 8%, transparent);
+      }
 
-  /* static "Soon" placeholder — same type as the summary label, but not a
+      /* static "Soon" placeholder — same type as the summary label, but not a
      link: no underline, no pointer, nothing to focus or click. */
-  .project-soon{
-    display:inline-block;
-    margin-top:12px;
-    font-weight:500;
-    font-size:15.1px;
-    color:var(--ink);
-    text-decoration:none;
-    cursor:default;
-  }
+      .project-soon{
+          display:inline-block;
+          margin-top:12px;
+          font-weight:500;
+          font-size:15.1px;
+          color:var(--ink);
+          text-decoration:none;
+          cursor:default;
+      }
 
-  /* download link — shares the "Read more" summary styling, sits above it */
-  .project-download,
-  .project-link{
-    display:inline-flex;
-    align-items:center;
-    gap:0.45em;
-    margin-top:12px;
-    font-weight:500;
-    font-size:15.1px;
-    color:var(--ink);
-    text-decoration:none;
-  }
-  /* underline the label only, so the icon stays clean — same treatment as
+      /* download link — shares the "Read more" summary styling, sits above it */
+      .project-download,
+      .project-link{
+          display:inline-flex;
+          align-items:center;
+          gap:0.45em;
+          margin-top:12px;
+          font-weight:500;
+          font-size:15.1px;
+          color:var(--ink);
+          text-decoration:none;
+      }
+      /* underline the label only, so the icon stays clean — same treatment as
      the "Read more" summary and its arrow */
-  .project-download .label,
-  .project-link .label{
-    text-decoration:underline;
-    text-underline-offset:2px;
-  }
-  .project-download:hover,
-  .project-link:hover{ color:var(--accent-1); }
-  /* inline SVG: scales with the text via 1em and is drawn in currentColor */
-  .dl-icon,
-  .link-icon{
-    width:1em;
-    height:1em;
-    flex:none;
-    color:var(--accent-2);
-    transform:translateY(0.5px);
-  }
+      .project-download .label,
+      .project-link .label{
+          text-decoration:underline;
+          text-underline-offset:2px;
+      }
+      .project-download:hover,
+      .project-link:hover{ color:var(--accent-1); }
+      /* inline SVG: scales with the text via 1em and is drawn in currentColor */
+      .dl-icon,
+      .link-icon{
+          width:1em;
+          height:1em;
+          flex:none;
+          color:var(--accent-2);
+          transform:translateY(0.5px);
+      }
 
-  .project-more{ margin-top:10px; }
-  .project-more summary{
-    display:inline-flex;
-    align-items:center;
-    gap:0.45em;
-    cursor:pointer;
-    font-weight:500;
-    font-size:15.1px;
-    list-style:none;
-    color:var(--ink);
-    text-decoration:none;
-  }
-  /* underline the label only — an underline on the summary itself propagates
+      .project-more{ margin-top:10px; }
+      .project-more summary{
+          display:inline-flex;
+          align-items:center;
+          gap:0.45em;
+          cursor:pointer;
+          font-weight:500;
+          font-size:15.1px;
+          list-style:none;
+          color:var(--ink);
+          text-decoration:none;
+      }
+      /* underline the label only — an underline on the summary itself propagates
      to the ::after arrow, and a child element can't opt back out of it */
-  .project-more summary .label-closed,
-  .project-more summary .label-open{
-    text-decoration:underline;
-    text-underline-offset:2px;
-  }
-  .project-more summary::-webkit-details-marker{ display:none; }
-  /* same geometry and stroke-width as .dl-icon so the two arrows match.
+      .project-more summary .label-closed,
+      .project-more summary .label-open{
+          text-decoration:underline;
+          text-underline-offset:2px;
+      }
+      .project-more summary::-webkit-details-marker{ display:none; }
+      /* same geometry and stroke-width as .dl-icon so the two arrows match.
      Drawn pointing down; the closed state rotates it to point right. */
-  .more-icon{
-    width:1em;
-    height:1em;
-    flex:none;
-    color:var(--accent-2);
-    transform:rotate(-90deg);
-    transition:transform .18s ease;
-  }
-  .project-more[open] summary .more-icon{ transform:rotate(0deg); }
-  .project-more summary:hover{ color:var(--accent-1); }
-  .project-more summary .label-open{ display:none; }
-  .project-more[open] summary .label-closed{ display:none; }
-  .project-more[open] summary .label-open{ display:inline; }
-  .project-more-text{ margin:10px 0 0; color:var(--ink-muted); }
+      .more-icon{
+          width:1em;
+          height:1em;
+          flex:none;
+          color:var(--accent-2);
+          transform:rotate(-90deg);
+          transition:transform .18s ease;
+      }
+      .project-more[open] summary .more-icon{ transform:rotate(0deg); }
+      .project-more summary:hover{ color:var(--accent-1); }
+      .project-more summary .label-open{ display:none; }
+      .project-more[open] summary .label-closed{ display:none; }
+      .project-more[open] summary .label-open{ display:inline; }
+      .project-more-text{ margin:10px 0 0; color:var(--ink-muted); }
 
-  /* ---- code blocks, styled after theorangeduck.com ----
+      /* ---- code blocks, styled after theorangeduck.com ----
      Token colours come from the --code-* variables defined in the
      :root blocks at the top. Wrap tokens in the c-* spans below:
        c-comment  comments
@@ -400,366 +400,372 @@
        c-type     types (float, int ...)
        c-op       operators, brackets, punctuation
        c-num      numeric literals                                   */
-  .code-block{
-    background:var(--code-bg);
-    color:var(--code-ink);
-    border:2px solid var(--code-border);
-    padding:10px 14px;
-    margin:14px 0 0;
-    font-family:Consolas,'Liberation Mono','DejaVu Sans Mono','Courier New',monospace;
-    font-size:14px;
-    line-height:1.45;
-    white-space:pre;
-    overflow-x:auto;   /* wide lines scroll here rather than the page */
-    tab-size:4;
-  }
-  .code-block code{
-    font:inherit;
-    color:inherit;
-    background:none;
-  }
-  .code-block .c-comment{ color:var(--code-comment); }
-  .code-block .c-keyword{ color:var(--code-keyword); }
-  .code-block .c-type{ color:var(--code-type); }
-  .code-block .c-op{ color:var(--code-operator); }
-  .code-block .c-num{ color:var(--code-number); }
+      .code-block{
+          background:var(--code-bg);
+          color:var(--code-ink);
+          border:2px solid var(--code-border);
+          padding:10px 14px;
+          margin:14px 0 0;
+          font-family:Consolas,'Liberation Mono','DejaVu Sans Mono','Courier New',monospace;
+          font-size:14px;
+          line-height:1.45;
+          white-space:pre;
+          overflow-x:auto;   /* wide lines scroll here rather than the page */
+          tab-size:4;
+      }
+      .code-block code{
+          font:inherit;
+          color:inherit;
+          background:none;
+      }
+      .code-block .c-comment{ color:var(--code-comment); }
+      .code-block .c-keyword{ color:var(--code-keyword); }
+      .code-block .c-type{ color:var(--code-type); }
+      .code-block .c-op{ color:var(--code-operator); }
+      .code-block .c-num{ color:var(--code-number); }
 
-  /* ---- contact ---- */
-  .contact-list{
-    display:flex;
-    flex-direction:column;
-    gap:6px;
-  }
-  .contact-list a{
-    display:inline-flex;
-    gap:10px;
-    color:var(--ink);
-    padding:2px 0;
-  }
-  .contact-list a::before{ content:"→"; color:var(--accent-2); text-decoration:none; }
-  .contact-label{ color:var(--ink-muted); min-width:6.5em; display:inline-block; }
+      /* ---- contact ---- */
+      .contact-list{
+          display:flex;
+          flex-direction:column;
+          gap:6px;
+      }
+      .contact-list a{
+          display:inline-flex;
+          gap:10px;
+          color:var(--ink);
+          padding:2px 0;
+      }
+      .contact-list a::before{ content:"→"; color:var(--accent-2); text-decoration:none; }
+      .contact-label{ color:var(--ink-muted); min-width:6.5em; display:inline-block; }
 
-  footer{
-    margin-top:40px;
-    color:var(--ink-muted);
-    font-size:13.75px;
-    display:flex;
-    justify-content:space-between;
-    flex-wrap:wrap;
-    gap:8px;
-  }
-  footer a{ color:var(--ink-muted); }
-  footer a:hover{ color:var(--accent-1); }
+      footer{
+          margin-top:40px;
+          color:var(--ink-muted);
+          font-size:13.75px;
+          display:flex;
+          justify-content:space-between;
+          flex-wrap:wrap;
+          gap:8px;
+      }
+      footer a{ color:var(--ink-muted); }
+      footer a:hover{ color:var(--accent-1); }
 
-  /* "mobile" = portrait: height >= width. Landscape gets the desktop layout. */
-  @media (orientation:portrait){
-    body{ padding:12px 8px; }
-    .content{ padding:30px 22px 36px; }
-    nav.links{ padding:20px 22px; }
-    .project-head{ flex-direction:column; align-items:flex-start; }
-    /* keep only the first sentence of the intro on small screens */
-    .tagline-more{ display:none; }
-  }
-</style>
-</head>
-<body>
+      /* "mobile" = portrait: height >= width. Landscape gets the desktop layout. */
+      @media (orientation:portrait){
+          body{ padding:12px 8px; }
+          .content{ padding:30px 22px 36px; }
+          nav.links{ padding:20px 22px; }
+          .project-head{ flex-direction:column; align-items:flex-start; }
+          /* keep only the first sentence of the intro on small screens */
+          .tagline-more{ display:none; }
+      }
+    </style>
+  </head>
+  <body>
 
-<div class="frame-outer">
-    <!-- EDIT: nav links -->
-    <nav class="links" aria-label="Primary">
-      <a href="#projects">Projects</a><span class="dot">.</span><a href="#work">Work</a><span class="dot">.</span><a href="#about">About</a><span class="dot">.</span><a href="#contact">Contact</a><span class="dot">.</span><a href="https://github.com/" target="_blank" rel="noopener">Github</a>
-    </nav>
-    <div class="content">
+    <div class="frame-outer">
+      <!-- EDIT: nav links -->
+      <nav class="links" aria-label="Primary">
+        <a href="#projects">Projects</a><span class="dot">.</span><a href="#work">Work</a><span class="dot">.</span><a href="#about">About</a><span class="dot">.</span><a href="#contact">Contact</a><span class="dot">.</span><a href="https://github.com/" target="_blank" rel="noopener">Github</a>
+      </nav>
+      <div class="content">
 
-      <!-- EDIT: name, tagline -->
-      <!-- <p class="eyebrow">Portfolio</p> -->
-      <p class="eyebrow"></p>
-      <h1 class="name">Liam Turner<span class="cursor">_</span></h1>
-      <p class="tagline">I'm an Animation / AI programmer working on games and tools in Unreal and custom engines.<span class="tagline-more"> This is just a little hub for some of my faviourte projects I've made along with a selection of the games and tools I've worked on. Hope you find it interseting and play some of it :)</span></p>
-      <!-- <p class="tagline">If you want to get in contact for work or just some question about this stuff feel free to reach out to me, cheers</p> -->
+        <!-- EDIT: name, tagline -->
+        <!-- <p class="eyebrow">Portfolio</p> -->
+        <p class="eyebrow"></p>
+        <h1 class="name">Liam Turner<span class="cursor">_</span></h1>
+        <p class="tagline">I'm an Animation / AI programmer working on games and tools in Unreal and custom engines.<span class="tagline-more"> This is just a little hub for some of my faviourte projects I've made along with a selection of the games and tools I've worked on. Hope you find it interseting and play some of it :)</span></p>
+        <!-- <p class="tagline">If you want to get in contact for work or just some question about this stuff feel free to reach out to me, cheers</p> -->
 
-      <hr class="rule">
+        <hr class="rule">
 
-      <!-- EDIT: project list -->
-      <section id="projects">
-        <h2 class="section-title">Projects</h2>
-        <div class="project-list">
+        <!-- EDIT: project list -->
+        <section id="projects">
+          <h2 class="section-title">Projects</h2>
+          <div class="project-list">
 
-          <div class="project">
-            <div class="project-head">
-              <h3 class="project-title">Movement Shooter Navmesh</h3>
+            <div class="project">
+              <div class="project-head">
+                <h3 class="project-title">Movement Shooter Navmesh</h3>
+              </div>
+              <p class="project-desc">Fully Custom Navmesh / Path finding system for enemy AI</p>
+              <p class="project-body">feeling a little hard done by with unreals implementation of Recast/Detour I set out to build a system for AI to traverse complex 3D spaces by utilizing movement mechanics you would find in a 3rd person movement shooter, without any reliance on navlinks or unerlying Unreal Engine systems</p>
+
+              <!-- EDIT: video pattern — muted + loop + autoplay, sourced from a
+                   relative path, with native controls (play/pause/scrub/volume).
+                   Copy this block into any other .project div, or delete it if
+                   a project has no demo clip. -->
+              <video class="project-video" muted loop autoplay playsinline controls width="640" height="360" onloadedmetadata="this.volume=0.25">
+                <source src="media/skelter/navmesh_clip.mp4" type="video/mp4">
+              </video>
+
+              <div class="project-meta">
+                <span class="project-tags"><span>C++</span><span>Unreal Engine</span></span>
+              </div>
+              <!-- EDIT: download link — point href at the real file and
+                   keep the download attribute so it saves rather than opens. -->
+              <a class="project-download" href="media/skelter/navmesh_clip.mp4" download><span class="label">Demo</span><svg class="dl-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M12 3v12"/><path d="M7 10.5 12 15.5 17 10.5"/><path d="M4.5 15.5v4h15v-4"/></svg></a>
+              <details class="project-more">
+                <summary><span class="label-closed">Read more</span><span class="label-open">Show less</span><svg class="more-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M12 4v15"/><path d="M6.5 13 12 19 17.5 13"/></svg></summary>
+                <p class="project-more-text">Built as an internal tool for iterating on a movement shooter's navmesh, this viewer scrubs through captured animation frames alongside the mesh data so traversal edges and drop-offs can be checked without booting the full game. It grew out of needing fast turnaround on retargeting fixes: load a clip, spot the foot-sliding or clipping issue, patch it, reload — no editor restart required.</p>
+
+                <!-- EDIT: code block — see the .code-block rules in the stylesheet
+                     for the list of c-* token classes. -->
+                <pre class="code-block"><code data-language="C"><span class="c-comment">// Check if target changed</span>
+                    <span class="c-keyword">if</span> <span class="c-op">(</span>IsMouseButtonDown<span class="c-op">(</span>MOUSE_RIGHT_BUTTON<span class="c-op">))</span>
+                    <span class="c-op">{</span>
+                    <span class="c-keyword">if</span> <span class="c-op">(</span>g <span class="c-op">!=</span> GetMousePosition<span class="c-op">().</span>y<span class="c-op">)</span>
+                    <span class="c-op">{</span>
+                    <span class="c-comment">// Update Target</span>
+                    g <span class="c-op">=</span> GetMousePosition<span class="c-op">().</span>y<span class="c-op">;</span>
+
+                    <span class="c-comment">// Solve for smoothstep parameters `s` and `t`</span>
+                    smoothstep_solve<span class="c-op">(</span>et<span class="c-op">,</span> es<span class="c-op">,</span> g <span class="c-op">-</span> x<span class="c-op">,</span> smoothstep_dt<span class="c-op">(</span>et<span class="c-op">,</span> es<span class="c-op">));</span>
+
+                    <span class="c-comment">// Set the offset to the difference between the target and current eased value</span>
+                    eo <span class="c-op">=</span> x <span class="c-op">-</span> smoothstep<span class="c-op">(</span>et<span class="c-op">,</span> es<span class="c-op">);</span>
+                    <span class="c-op">}</span>
+                    <span class="c-op">}</span>
+
+                    <span class="c-comment">// Update the easing time</span>
+                    et <span class="c-op">+=</span> dt <span class="c-op">/</span> max<span class="c-op">(</span>blendtime<span class="c-op">,</span> <span class="c-num">1e-4f</span><span class="c-op">);</span>
+
+                    <span class="c-comment">// Update the eased value</span>
+                    x <span class="c-op">=</span> eo <span class="c-op">+</span> smoothstep<span class="c-op">(</span>et<span class="c-op">,</span> es<span class="c-op">);</span>
+
+                    <span class="c-comment">// Update Time</span>
+                    t <span class="c-op">+=</span> dt<span class="c-op">;</span>
+                </code></pre>
+              </details>
             </div>
-            <p class="project-desc">Fully Custom Navmesh / Path finding system for enemy AI</p>
-            <p class="project-body">feeling a little hard done by with unreals implementation of Recast/Detour I set out to build a system for AI to traverse complex 3D spaces by utilizing movement mechanics you would find in a 3rd person movement shooter, without any reliance on navlinks or unerlying Unreal Engine systems</p>
 
-            <!-- EDIT: video pattern — muted + loop + autoplay, sourced from a
-                 relative path, with native controls (play/pause/scrub/volume).
-                 Copy this block into any other .project div, or delete it if
-                 a project has no demo clip. -->
-            <video class="project-video" muted loop autoplay playsinline controls width="640" height="360" onloadedmetadata="this.volume=0.25">
-              <source src="media/skelter/navmesh_clip.mp4" type="video/mp4">
-            </video>
+            <div class="project">
+              <div class="project-head">
+                <h3 class="project-title">Potion</h3>
+              </div>
+              <p class="project-desc">An animation framwork wrtien in C++ OpenGL using state machines and ML</p>
+              <p class="project-body">Recently I've been doing alot of experimentation with 3rd gameplay mechanics so I decided it was time to finally create some base framework fo which to build these ideas of instead of having to make it from scratch every time.... So I made potion.
+                A capsule movement / Animation system for humanoid bipeds that I tried to make as compatible with what ever engine architure I had in mind for that week'</p>
 
-            <div class="project-meta">
-              <span class="project-tags"><span>C++</span><span>Unreal Engine</span></span>
+              
+              <video class="project-video" muted loop autoplay playsinline controls width="640" height="360" onloadedmetadata="this.volume=0.25">
+                <source src="media/potion/potion clip.mp4" type="video/mp4">
+              </video>
+
+              <div class="project-meta">
+                <span class="project-tags"><span>C++</span><span>OpenGL</span><span>Pyton</span></span>
+              </div>
+              <!-- EDIT: download link — point href at the real file and
+                   keep the download attribute so it saves rather than opens. -->
+              <a class="project-download" href="media/potion/potion clip.mp4" download><span class="label">Demo</span><svg class="dl-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M12 3v12"/><path d="M7 10.5 12 15.5 17 10.5"/><path d="M4.5 15.5v4h15v-4"/></svg></a>
+              <details class="project-more">
+                <summary><span class="label-closed">Read more</span><span class="label-open">Show less</span><svg class="more-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M12 4v15"/><path d="M6.5 13 12 19 17.5 13"/></svg></summary>
+                <p class="project-more-text">Loam parses a small config DSL into a typed tree with real error locations instead of a generic "invalid syntax" message. It started as a way to avoid pulling in a full serialization framework for tools that only ever need a handful of settings, and the combinator approach made it easy to add new field types without touching the core parser.</p>
+              </details>
             </div>
-            <!-- EDIT: download link — point href at the real file and
-                 keep the download attribute so it saves rather than opens. -->
-            <a class="project-download" href="media/skelter/navmesh_clip.mp4" download><span class="label">Demo</span><svg class="dl-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M12 3v12"/><path d="M7 10.5 12 15.5 17 10.5"/><path d="M4.5 15.5v4h15v-4"/></svg></a>
-            <details class="project-more">
-              <summary><span class="label-closed">Read more</span><span class="label-open">Show less</span><svg class="more-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M12 4v15"/><path d="M6.5 13 12 19 17.5 13"/></svg></summary>
-              <p class="project-more-text">Built as an internal tool for iterating on a movement shooter's navmesh, this viewer scrubs through captured animation frames alongside the mesh data so traversal edges and drop-offs can be checked without booting the full game. It grew out of needing fast turnaround on retargeting fixes: load a clip, spot the foot-sliding or clipping issue, patch it, reload — no editor restart required.</p>
 
-              <!-- EDIT: code block — see the .code-block rules in the stylesheet
-                   for the list of c-* token classes. -->
-<pre class="code-block"><code data-language="C"><span class="c-comment">// Check if target changed</span>
-<span class="c-keyword">if</span> <span class="c-op">(</span>IsMouseButtonDown<span class="c-op">(</span>MOUSE_RIGHT_BUTTON<span class="c-op">))</span>
-<span class="c-op">{</span>
-    <span class="c-keyword">if</span> <span class="c-op">(</span>g <span class="c-op">!=</span> GetMousePosition<span class="c-op">().</span>y<span class="c-op">)</span>
-    <span class="c-op">{</span>
-        <span class="c-comment">// Update Target</span>
-        g <span class="c-op">=</span> GetMousePosition<span class="c-op">().</span>y<span class="c-op">;</span>
+            <div class="project">
+              <div class="project-head">
+                <h3 class="project-title">Game Prototype</h3>
+              </div>
+              <p class="project-desc">A movement shooter concept</p>
+              <p class="project-body">why make all these things if you dont make a game with them? well I tried to solve that by thinking of a game concept that combined all of the things I had been working on and instead of subjecting would be players to some of my programmer art I used some assets from one of my favioute games</p>
 
-        <span class="c-comment">// Solve for smoothstep parameters `s` and `t`</span>
-        smoothstep_solve<span class="c-op">(</span>et<span class="c-op">,</span> es<span class="c-op">,</span> g <span class="c-op">-</span> x<span class="c-op">,</span> smoothstep_dt<span class="c-op">(</span>et<span class="c-op">,</span> es<span class="c-op">));</span>
+              <video class="project-video" muted loop autoplay playsinline controls width="640" height="360" onloadedmetadata="this.volume=0.25">
+                <source src="media/Prototype/chips_intro_reduced_c.mp4" type="video/mp4">
+              </video>
 
-        <span class="c-comment">// Set the offset to the difference between the target and current eased value</span>
-        eo <span class="c-op">=</span> x <span class="c-op">-</span> smoothstep<span class="c-op">(</span>et<span class="c-op">,</span> es<span class="c-op">);</span>
-    <span class="c-op">}</span>
-<span class="c-op">}</span>
+              <div class="project-meta">
+                <span class="project-tags"><span>C++</span><span>Unreal Engine</span></span>
+              </div>
+              <!-- EDIT: no download yet — static placeholder in the slot the
+                   download link occupies on the other projects. -->
+              <span class="project-soon">Demo avalibe soon</span>
 
-<span class="c-comment">// Update the easing time</span>
-et <span class="c-op">+=</span> dt <span class="c-op">/</span> max<span class="c-op">(</span>blendtime<span class="c-op">,</span> <span class="c-num">1e-4f</span><span class="c-op">);</span>
+              <details class="project-more">
+                <summary><span class="label-closed">Read more</span><span class="label-open">Show less</span><svg class="more-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M12 4v15"/><path d="M6.5 13 12 19 17.5 13"/></svg></summary>
+                <p class="project-more-text">Fieldnotes reads a flat folder of dated Markdown files and turns them into a browsable log with almost nothing to set up — no themes to pick, no plugins to install, no build pipeline to babysit. It exists because every other static-site generator felt like overkill for what is, in practice, a running list of entries in date order.</p>
+              </details>
+            </div>
 
-<span class="c-comment">// Update the eased value</span>
-x <span class="c-op">=</span> eo <span class="c-op">+</span> smoothstep<span class="c-op">(</span>et<span class="c-op">,</span> es<span class="c-op">);</span>
-
-<span class="c-comment">// Update Time</span>
-t <span class="c-op">+=</span> dt<span class="c-op">;</span>
-</code></pre>
-            </details>
           </div>
+        </section>
 
-          <div class="project">
-            <div class="project-head">
-              <h3 class="project-title">Potion</h3>
+        <hr class="rule">
+
+        <!-- EDIT: work list -->
+        <section id="work">
+          <h2 class="section-title">Work</h2>
+          <div class="project-list">
+
+            <div class="project">
+              <div class="project-head">
+                <h3 class="project-title">Narrative Pro</h3>
+              </div>
+              <p class="project-desc">Unreal engie plugin</p>
+
+              
+
+              <video class="project-video" muted loop autoplay playsinline controls width="640" height="360" onloadedmetadata="this.volume=0.25">
+                <source src="media/Narrative/narrative pro clip 1.mp4" type="video/mp4">
+              </video>
+              
+              
+              
+
+              <div class="project-meta">
+                <span class="project-tags"><span>Blueprint</span><span>Control rig</span><span>Unreal Engine</span></span>
+              </div>
+              <!-- EDIT: download link — point href at the real file and
+                   keep the download attribute so it saves rather than opens. -->
+              <a class="project-link" href="https://github.com/LiamTexasTurner" target="_blank" rel="noopener"><span class="label">Link</span><svg class="link-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/></svg></a>
+              <details class="project-more">
+                <summary><span class="label-closed">Read more</span><span class="label-open">Show less</span><svg class="more-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M12 4v15"/><path d="M6.5 13 12 19 17.5 13"/></svg></summary>
+                <p class="project-more-text">A loose grab-bag of one-off shader and procgen experiments that never grew into anything bigger than a single file: raymarched noise fields, a couple of terrain erosion sketches, an attempt at cloud rendering that got shelved. Kept together here mostly so they don't get lost in random folders.</p>
+              </details>
             </div>
-            <p class="project-desc">An animation framwork wrtien in C++ OpenGL using state machines and ML</p>
-            <p class="project-body">Recently I've been doing alot of experimentation with 3rd gameplay mechanics so I decided it was time to finally create some base framework fo which to build these ideas of instead of having to make it from scratch every time.... So I made potion.
-A capsule movement / Animation system for humanoid bipeds that I tried to make as compatible with what ever engine architure I had in mind for that week'</p>
 
-            
-            <video class="project-video" muted loop autoplay playsinline controls width="640" height="360" onloadedmetadata="this.volume=0.25">
-              <source src="media/potion/potion clip.mp4" type="video/mp4">
-            </video>
-
-            <div class="project-meta">
-              <span class="project-tags"><span>C++</span><span>OpenGL</span><span>Pyton</span></span>
-            </div>
-            <!-- EDIT: download link — point href at the real file and
-                 keep the download attribute so it saves rather than opens. -->
-            <a class="project-download" href="media/potion/potion clip.mp4" download><span class="label">Demo</span><svg class="dl-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M12 3v12"/><path d="M7 10.5 12 15.5 17 10.5"/><path d="M4.5 15.5v4h15v-4"/></svg></a>
-            <details class="project-more">
-              <summary><span class="label-closed">Read more</span><span class="label-open">Show less</span><svg class="more-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M12 4v15"/><path d="M6.5 13 12 19 17.5 13"/></svg></summary>
-              <p class="project-more-text">Loam parses a small config DSL into a typed tree with real error locations instead of a generic "invalid syntax" message. It started as a way to avoid pulling in a full serialization framework for tools that only ever need a handful of settings, and the combinator approach made it easy to add new field types without touching the core parser.</p>
-            </details>
           </div>
+        </section>
 
-          <div class="project">
-            <div class="project-head">
-              <h3 class="project-title">Game Prototype</h3>
-            </div>
-            <p class="project-desc">A movement shooter concept</p>
-            <p class="project-body">why make all these things if you dont make a game with them? well I tried to solve that by thinking of a game concept that combined all of the things I had been working on and instead of subjecting would be players to some of my programmer art I used some assets from one of my favioute games</p>
+        <hr class="rule">
 
-            <video class="project-video" muted loop autoplay playsinline controls width="640" height="360" onloadedmetadata="this.volume=0.25">
-              <source src="media/Prototype/chips_intro_reduced_c.mp4" type="video/mp4">
-            </video>
+        <!-- EDIT: bio + skills -->
+        <section id="about">
+          <h2 class="section-title">About</h2>
+          <div class="prose">
+            <p>I'm a software engineer focused on animation systems, tooling and the occasional weird side project. Most of my work sits somewhere between graphics programming and developer tooling — things that make other people's work faster or their output look better.</p>
 
-            <div class="project-meta">
-              <span class="project-tags"><span>C++</span><span>Unreal Engine</span></span>
-            </div>
-            <!-- EDIT: no download yet — static placeholder in the slot the
-                 download link occupies on the other projects. -->
-            <span class="project-soon">Demo avalibe soon</span>
+            <img class="about-image" src="media/about/000052160010-2.jpg" alt="Portrait of Liam Turner">
 
-            <details class="project-more">
-              <summary><span class="label-closed">Read more</span><span class="label-open">Show less</span><svg class="more-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M12 4v15"/><path d="M6.5 13 12 19 17.5 13"/></svg></summary>
-              <p class="project-more-text">Fieldnotes reads a flat folder of dated Markdown files and turns them into a browsable log with almost nothing to set up — no themes to pick, no plugins to install, no build pipeline to babysit. It exists because every other static-site generator felt like overkill for what is, in practice, a running list of entries in date order.</p>
-            </details>
+
+            <p class="muted">Previously at a couple of studios you've probably heard of. Based in Sydney, usually awake at odd hours debugging something that only breaks on Tuesdays.</p>
           </div>
+          <p class="skills-line">C++ · Python · Rust · OpenGL · Animation Systems · Tooling</p>
+        </section>
 
-        </div>
-      </section>
+        <hr class="rule">
 
-      <hr class="rule">
-
-      <!-- EDIT: work list -->
-      <section id="work">
-        <h2 class="section-title">Work</h2>
-        <div class="project-list">
-
-          <div class="project">
-            <div class="project-head">
-              <h3 class="project-title">Narrative Pro</h3>
-            </div>
-            <p class="project-desc">Unreal engie plugin</p>
-
-            <!-- EDIT: no demo clip yet — swap for a <video class="project-video"> like the pattern above once one exists. -->
-            <div class="project-video-placeholder" aria-hidden="true">No preview yet</div>
-
-            <div class="project-meta">
-              <span class="project-tags"><span>Blueprint</span><span>Control rig</span><span>Unreal Engine</span></span>
-            </div>
-            <!-- EDIT: download link — point href at the real file and
-                 keep the download attribute so it saves rather than opens. -->
-            <a class="project-link" href="https://github.com/LiamTexasTurner" target="_blank" rel="noopener"><span class="label">Link</span><svg class="link-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/></svg></a>
-            <details class="project-more">
-              <summary><span class="label-closed">Read more</span><span class="label-open">Show less</span><svg class="more-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M12 4v15"/><path d="M6.5 13 12 19 17.5 13"/></svg></summary>
-              <p class="project-more-text">A loose grab-bag of one-off shader and procgen experiments that never grew into anything bigger than a single file: raymarched noise fields, a couple of terrain erosion sketches, an attempt at cloud rendering that got shelved. Kept together here mostly so they don't get lost in random folders.</p>
-            </details>
+        <!-- EDIT: contact links -->
+        <section id="contact">
+          <h2 class="section-title">Contact</h2>
+          <div class="contact-list">
+            <a href="liamtexasturner@gmail.com"><span class="contact-label">email</span>
+              <a href="https://github.com/" target="_blank" rel="noopener"><span class="contact-label">github</span>
+                <a href="https://www.linkedin.com/in/liam-turner-542a21310/" target="_blank" rel="noopener"><span class="contact-label">linkedin</span>
+                  <a href="https://www.youtube.com/@Manray_Gaming" target="_blank" rel="noopener"><span class="contact-label">youtube</span>
+                    
           </div>
+        </section>
 
-        </div>
-      </section>
+        <hr class="rule">
 
-      <hr class="rule">
+        <footer>
+          <span>Built by hand, updated 2026.</span>
+          <a href="#about">Back to top ↑</a>
+        </footer>
 
-      <!-- EDIT: bio + skills -->
-      <section id="about">
-        <h2 class="section-title">About</h2>
-        <div class="prose">
-          <p>I'm a software engineer focused on animation systems, tooling and the occasional weird side project. Most of my work sits somewhere between graphics programming and developer tooling — things that make other people's work faster or their output look better.</p>
-
-          <img class="about-image" src="media/about/000052160010-2.jpg" alt="Portrait of Liam Turner">
-
-
-          <p class="muted">Previously at a couple of studios you've probably heard of. Based in Sydney, usually awake at odd hours debugging something that only breaks on Tuesdays.</p>
-        </div>
-        <p class="skills-line">C++ · Python · Rust · OpenGL · Animation Systems · Tooling</p>
-      </section>
-
-      <hr class="rule">
-
-      <!-- EDIT: contact links -->
-      <section id="contact">
-        <h2 class="section-title">Contact</h2>
-        <div class="contact-list">
-          <a href="liamtexasturner@gmail.com"><span class="contact-label">email</span>
-            <a href="https://github.com/" target="_blank" rel="noopener"><span class="contact-label">github</span>
-              <a href="https://www.linkedin.com/in/liam-turner-542a21310/" target="_blank" rel="noopener"><span class="contact-label">linkedin</span>
-                <a href="https://www.youtube.com/@Manray_Gaming" target="_blank" rel="noopener"><span class="contact-label">youtube</span>
-                  
-        </div>
-      </section>
-
-      <hr class="rule">
-
-      <footer>
-        <span>Built by hand, updated 2026.</span>
-        <a href="#about">Back to top ↑</a>
-      </footer>
-
+      </div>
     </div>
-</div>
 
-<script>
-  // EDIT: on mobile, hide the nav bar on scroll-down and reveal it on
-  // scroll-up (matches the portrait breakpoint used elsewhere in the CSS).
-  (function(){
-    var nav = document.querySelector('nav.links');
-    var isMobile = window.matchMedia('(orientation:portrait)');
-    var lastY = window.scrollY;
+    <script>
+      // EDIT: on mobile, hide the nav bar on scroll-down and reveal it on
+      // scroll-up (matches the portrait breakpoint used elsewhere in the CSS).
+      (function(){
+      var nav = document.querySelector('nav.links');
+      var isMobile = window.matchMedia('(orientation:portrait)');
+      var lastY = window.scrollY;
 
-    window.addEventListener('scroll', function(){
+      window.addEventListener('scroll', function(){
       if(!isMobile.matches){
-        nav.classList.remove('nav-hidden');
-        lastY = window.scrollY;
-        return;
+      nav.classList.remove('nav-hidden');
+      lastY = window.scrollY;
+      return;
       }
       var y = window.scrollY;
       if(y > lastY && y > 80){
-        nav.classList.add('nav-hidden');
+      nav.classList.add('nav-hidden');
       } else {
-        nav.classList.remove('nav-hidden');
+      nav.classList.remove('nav-hidden');
       }
       lastY = y;
-    }, { passive:true });
-  })();
+      }, { passive:true });
+      })();
 
-  // Force project clips to restart at the end, in case the native `loop`
-  // attribute stalls (heavy 4K HEVC decodes can drop the loop).
-  (function(){
-    document.querySelectorAll('video.project-video').forEach(function(v){
+      // Force project clips to restart at the end, in case the native `loop`
+      // attribute stalls (heavy 4K HEVC decodes can drop the loop).
+      (function(){
+      document.querySelectorAll('video.project-video').forEach(function(v){
       v.loop = true;
       v.addEventListener('ended', function(){
-        v.currentTime = 0;
-        var p = v.play();
-        if(p && p.catch){ p.catch(function(){}); }
+      v.currentTime = 0;
+      var p = v.play();
+      if(p && p.catch){ p.catch(function(){}); }
       });
       // Belt and braces: if playback parks on the last frame without ever
       // firing "ended", nudge it back to the start.
       v.addEventListener('timeupdate', function(){
-        if(v.duration && v.currentTime >= v.duration - 0.05){
-          v.currentTime = 0;
-          var p = v.play();
-          if(p && p.catch){ p.catch(function(){}); }
-        }
-      });
-    });
-  })();
-
-  // Collapse any open "Read more" panels when a nav link is clicked.
-  (function(){
-    document.querySelectorAll('nav.links a').forEach(function(link){
-      link.addEventListener('click', function(){
-        document.querySelectorAll('details.project-more[open]').forEach(function(d){
-          d.open = false;
-        });
-      });
-    });
-  })();
-
-  // On mobile, move each project's body copy to the top of its "Read more"
-  // panel. The body sits outside <details> in the markup, so CSS ordering
-  // can't do this — it has to be an actual DOM move, undone on desktop.
-  (function(){
-    var mq = window.matchMedia('(orientation:portrait)');
-    var entries = [];
-
-    document.querySelectorAll('.project').forEach(function(project){
-      var body = project.querySelector('.project-body');
-      var details = project.querySelector('details.project-more');
-      var summary = details ? details.querySelector('summary') : null;
-      if(body && summary){
-        entries.push({
-          body: body,
-          summary: summary,
-          home: body.parentNode,
-          anchor: body.nextSibling  // remembered so desktop can put it back
-        });
+      if(v.duration && v.currentTime >= v.duration - 0.05){
+      v.currentTime = 0;
+      var p = v.play();
+      if(p && p.catch){ p.catch(function(){}); }
       }
-    });
-
-    function apply(isMobile){
-      entries.forEach(function(e){
-        if(isMobile){
-          if(e.body.parentNode !== e.summary.parentNode){
-            e.summary.insertAdjacentElement('afterend', e.body);
-          }
-        } else if(e.body.parentNode !== e.home){
-          e.home.insertBefore(e.body, e.anchor);
-        }
       });
-    }
+      });
+      })();
 
-    apply(mq.matches);
-    if(mq.addEventListener){
-      mq.addEventListener('change', function(ev){ apply(ev.matches); });
-    } else if(mq.addListener){
-      mq.addListener(function(ev){ apply(ev.matches); });
-    }
-  })();
-</script>
-</body>
+      // Collapse any open "Read more" panels when a nav link is clicked.
+      (function(){
+      document.querySelectorAll('nav.links a').forEach(function(link){
+      link.addEventListener('click', function(){
+      document.querySelectorAll('details.project-more[open]').forEach(function(d){
+      d.open = false;
+      });
+      });
+      });
+      })();
+
+      // On mobile, move each project's body copy to the top of its "Read more"
+      // panel. The body sits outside <details> in the markup, so CSS ordering
+        // can't do this — it has to be an actual DOM move, undone on desktop.
+        (function(){
+        var mq = window.matchMedia('(orientation:portrait)');
+        var entries = [];
+
+        document.querySelectorAll('.project').forEach(function(project){
+        var body = project.querySelector('.project-body');
+        var details = project.querySelector('details.project-more');
+        var summary = details ? details.querySelector('summary') : null;
+        if(body && summary){
+        entries.push({
+        body: body,
+        summary: summary,
+        home: body.parentNode,
+        anchor: body.nextSibling  // remembered so desktop can put it back
+        });
+        }
+        });
+
+        function apply(isMobile){
+        entries.forEach(function(e){
+        if(isMobile){
+        if(e.body.parentNode !== e.summary.parentNode){
+        e.summary.insertAdjacentElement('afterend', e.body);
+        }
+        } else if(e.body.parentNode !== e.home){
+        e.home.insertBefore(e.body, e.anchor);
+        }
+        });
+        }
+
+        apply(mq.matches);
+        if(mq.addEventListener){
+        mq.addEventListener('change', function(ev){ apply(ev.matches); });
+        } else if(mq.addListener){
+        mq.addListener(function(ev){ apply(ev.matches); });
+        }
+        })();
+    </script>
+  </body>
 </html>
